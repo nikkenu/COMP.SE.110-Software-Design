@@ -1,1 +1,27 @@
-Test
+# 25.2 12:30 Assistent meeting
+
+# High level description
+- Chosen structure: MVC (Model, View, Controller).
+
+- Components:
+
+    Backend:
+        - API handler (One or two?)
+        - Main
+        - Ilmatieteenlaitos Model
+        - Ilmatieteenlaitos Controller
+        - Findgrid Model
+        - Findgrid Controller
+
+    Frontend:
+        - Findgrid View
+        - Ilmatieteenlaitos View
+        - 
+
+- Libraries:
+    - Qt
+
+- Technologies:
+    - Postman
+    - Qt
+    - QML
