@@ -18,7 +18,7 @@ void BaseAPIhandler::readyRead()
     qInfo() << "NetworkManager::readyRead";
 
     QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
-    if(reply) {
+    if(reply->error() != QNetworkReply::NoError) {
         qInfo() << "Reply exists";
         qInfo() << reply->readAll();
     }
