@@ -1,7 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QApplication>
-#include "api_handler.h"
+#include "fmihandler.h"
+#include "fingridhandler.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,10 +21,8 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
     //W8AlS1jgxO7XygNLzms35afCiMEltmZL2ohQkmSP
-    API_handler asd;
-    QNetworkRequest request(QUrl("https://api.fingrid.fi/v1/variable/193/event/json"));
-    request.setRawHeader("x-api-key", "W8AlS1jgxO7XygNLzms35afCiMEltmZL2ohQkmSP");
-    asd.get(request);
+    FMIhandler fmi;
+    Fingridhandler fin;
 
     return app.exec();
 }
