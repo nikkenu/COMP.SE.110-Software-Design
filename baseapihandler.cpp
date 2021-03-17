@@ -10,6 +10,7 @@ void BaseAPIhandler::get(QNetworkRequest request)
     qInfo() << "NetworkManager get";
     QNetworkReply *reply = m_manager.get(request);
     connect(reply, &QNetworkReply::readyRead,this,&BaseAPIhandler::readyRead);
+    connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &BaseAPIhandler::error);
 }
 
 void BaseAPIhandler::readyRead()
@@ -33,4 +34,9 @@ void BaseAPIhandler::sslErrors(QNetworkReply *reply, const QList<QSslError> &err
 {
     Q_UNUSED(reply);
     qInfo() << "NetworkManager ssl error: " << errors;
+}
+
+void BaseAPIhandler::error()
+{
+    qInfo() << "Base API handler error!";
 }

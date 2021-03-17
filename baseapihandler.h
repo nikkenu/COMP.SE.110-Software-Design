@@ -21,6 +21,11 @@ private slots:
     void readyRead();
     void finished(QNetworkReply *reply);
     void sslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
+    void error();
+
+protected:
+    QString m_baseUrl;
+    QString m_apikey;
 
 private:
     QNetworkAccessManager m_manager;

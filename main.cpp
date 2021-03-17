@@ -20,8 +20,7 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-    //W8AlS1jgxO7XygNLzms35afCiMEltmZL2ohQkmSP
-    FMIhandler fmi;
+    //FMIhandler fmi;
     Fingridhandler fin;
 
     return app.exec();
