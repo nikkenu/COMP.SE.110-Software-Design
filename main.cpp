@@ -20,8 +20,9 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-    //FMIhandler fmi;
+
     Fingridhandler fin;
+    fin.getFromFingrid(Fingridhandler::Electricity_consumption, "2018-01-21T02%3A12%3A22Z", "2018-01-22T02%3A12%3A22Z");
 
     return app.exec();
 }

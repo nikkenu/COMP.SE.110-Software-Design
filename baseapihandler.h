@@ -25,7 +25,7 @@ private slots:
 
 protected:
     QString m_baseUrl;
-    QString m_apikey;
+    QByteArray m_apikey;
 
 private:
     QNetworkAccessManager m_manager;

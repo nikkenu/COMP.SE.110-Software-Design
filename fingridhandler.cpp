@@ -2,11 +2,14 @@
 
 Fingridhandler::Fingridhandler()
 {
-    m_baseUrl = "https://api.fingrid.fi/";
+    m_baseUrl = "https://api.fingrid.fi/v1/variable/";
     m_apikey = "W8AlS1jgxO7XygNLzms35afCiMEltmZL2ohQkmSP";
+}
 
-//    qDebug() << "Findgrid test";
-//    QNetworkRequest request(QUrl("https://api.fingrid.fi/v1/variable/193/event/json"));
-//    request.setRawHeader("x-api-key", "W8AlS1jgxO7XygNLzms35afCiMEltmZL2ohQkmSP");
-//    get(request);
+void Fingridhandler::getFromFingrid(int id, QString start_time, QString end_time)
+{
+    QNetworkRequest rq(QUrl(m_baseUrl + id + "/events/xml?start_time=" + start_time + "&end_time=" + end_time));
+    rq.setRawHeader("x-api-key", m_apikey);
+    qDebug() << rq.url();
+    get(rq);
 }
