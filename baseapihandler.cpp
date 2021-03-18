@@ -1,4 +1,4 @@
-#include "BaseAPIhandler.h"
+#include "baseapihandler.h"
 
 BaseAPIhandler::BaseAPIhandler(QObject *parent) : QObject(parent)
 {
@@ -18,7 +18,7 @@ void BaseAPIhandler::readyRead()
     qInfo() << "NetworkManager::readyRead";
 
     QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
-    if(reply->error() != QNetworkReply::NoError) {
+    if(reply->error() == QNetworkReply::NoError) {
         qInfo() << "Reply exists";
         qInfo() << reply->readAll();
     }

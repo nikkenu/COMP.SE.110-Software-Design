@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     Fingridhandler fin;
-    fin.getFromFingrid(Fingridhandler::Electricity_consumption, "2018-01-21T02%3A12%3A22Z", "2018-01-22T02%3A12%3A22Z");
+    fin.getFromFingrid(Fingridhandler::Electricity_consumption, "2021-03-15T13:11:51Z", "2021-03-18T13:11:51Z");
 
     return app.exec();
 }

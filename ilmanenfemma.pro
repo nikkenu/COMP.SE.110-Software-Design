@@ -1,5 +1,6 @@
 QT += quick \
-    widgets
+    widgets \
+    network
 
 CONFIG += c++11
 
