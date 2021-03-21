@@ -33,7 +33,12 @@ Baseapihandler is inherited into fingrid- and fmihandlers which
 handle the api calls to Fingrid and Ilmatieteenlaitos respectively.  
 Model consists of datahandler that gets the data from apihandlers and  
 processes it ready for Chart. Chart processes data further ready to be  
-shown in a graph. Main QML then gets the data from chart and shows it in a graph.
+shown in a graph. Main QML then gets the data from Chart and shows it in a graph.
+
+Responsibilities:
+Apihandlers need to call the API and to make sure that the get the data in a reply.
+Datahandler and Chart need to handle the data and convert it to be ready for QML.
+Main QML needs to show the data.
 
 ## Self-evaluation (midterm)
 
