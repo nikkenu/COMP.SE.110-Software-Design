@@ -74,4 +74,9 @@ Window {
             chart.showData();
         }
     }
+
+    Component.onCompleted: {
+         chart.timeSeries = consumptionChart
+    }
+
 }

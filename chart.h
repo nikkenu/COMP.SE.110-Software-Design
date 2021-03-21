@@ -8,7 +8,11 @@
 
 #include "datahandler.h"
 
-
+struct MinMax
+{
+    int MIN;
+    int MAX;
+};
 
 class Chart : public QObject
 {
@@ -30,6 +34,7 @@ public slots:
 
 signals:
     void timeSeriesSignal();
+    void getData();
 
 
 private:

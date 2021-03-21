@@ -55,5 +55,11 @@ void DataHandler::printXml(const QByteArray &data)
 
     // just here for now, need to refactor this out
 
+    //emit sendDataToChart(values);
+}
+
+
+void DataHandler::dataSignal()
+{
     emit sendDataToChart(values);
 }

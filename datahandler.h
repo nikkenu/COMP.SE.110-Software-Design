@@ -25,6 +25,7 @@ public:
 
 public slots:
     void receiveData(QByteArray data);
+    void dataSignal();
 
 signals:
     void sendDataToChart(std::vector<DataHandler::time_series_element> data);
