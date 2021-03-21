@@ -13,6 +13,7 @@ public:
     explicit BaseAPIhandler(QObject *parent = nullptr);
 
 signals:
+    void sendData(QByteArray data);
 
 public slots:
     void get(QNetworkRequest request);
