@@ -15,19 +15,21 @@ public:
 
     void printXml(const QByteArray &data);
 
-
-public slots:
-    void receiveData(QByteArray data);
-
-signals:
-
-private:
-
     struct time_series_element {
         QString start_time;
         QString end_time;
         QString value;
     };
+
+
+
+public slots:
+    void receiveData(QByteArray data);
+
+signals:
+    void sendDataToChart(std::vector<DataHandler::time_series_element> data);
+private:
+
 
     void printData();
     // obviously this has to be reworked but works as a basis for the xml/json/whatever parsing

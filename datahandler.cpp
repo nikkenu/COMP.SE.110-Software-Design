@@ -11,6 +11,7 @@ void DataHandler::receiveData(QByteArray data)
 {
     m_data = data;
     printXml(data);
+
 }
 
 void DataHandler::printData()
@@ -51,4 +52,8 @@ void DataHandler::printXml(const QByteArray &data)
     }
 
     printData();
+
+    // just here for now, need to refactor this out
+
+    emit sendDataToChart(values);
 }

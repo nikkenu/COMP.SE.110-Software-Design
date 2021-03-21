@@ -6,6 +6,10 @@
 #include <QLineSeries>
 #include <QObject>
 
+#include "datahandler.h"
+
+
+
 class Chart : public QObject
 {
     Q_OBJECT
@@ -21,9 +25,8 @@ public:
 
     Q_INVOKABLE void showData();
 
-
-
-
+public slots:
+    void receiveData(std::vector<DataHandler::time_series_element> data);
 
 signals:
     void timeSeriesSignal();
@@ -32,6 +35,7 @@ signals:
 private:
     QtCharts::QLineSeries* timeSeries_;
 
+    // populate timeseries with random data for testing
     void randomData();
 
 
