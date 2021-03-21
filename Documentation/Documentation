@@ -26,6 +26,15 @@
     - Qt
     - QML
 
+## More detailed description
+
+How data flows through the program:
+Baseapihandler is inherited into fingrid- and fmihandlers which  
+handle the api calls to Fingrid and Ilmatieteenlaitos respectively.  
+Model consists of datahandler that gets the data from apihandlers and  
+processes it ready for Chart. Chart processes data further ready to be  
+shown in a graph. Main QML then gets the data from chart and shows it in a graph.
+
 ## Self-evaluation (midterm)
 
 Since the prototype phase, we have added a new,  
