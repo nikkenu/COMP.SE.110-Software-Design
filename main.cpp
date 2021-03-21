@@ -29,21 +29,19 @@ int main(int argc, char *argv[])
     Fingridhandler fin;
     DataHandler data;
     FMIhandler fmi;
-    fmi.getTemperatureDetails("2021-01-19T09:00:00Z", "2021-01-19T14:00:00Z", "Pirkkala", fmi.AVERAGE_TEMPERATURE);
 
+    QObject::connect(&data, &DataHandler::sendDataToChart,
+                     &chart, &Chart::receiveData);
 
-//    QObject::connect(&data, &DataHandler::sendDataToChart,
-//                     &chart, &Chart::receiveData);
-
-//    QObject::connect(&fin, &Fingridhandler::sendData, &data,
-//                     &DataHandler::receiveData);
+    QObject::connect(&fin, &Fingridhandler::sendData, &data,
+                     &DataHandler::receiveData);
 
     QObject::connect(&chart, &Chart::getData,
                      &data, &DataHandler::dataSignal);
 
 
-
-    //fin.getFromFingrid(Fingridhandler::Electricity_consumption, "2021-03-15T13:11:51Z", "2021-03-18T13:11:51Z");
+    fmi.getTemperatureDetails("2021-01-19T09:00:00Z", "2021-01-19T14:00:00Z", "Pirkkala", fmi.AVERAGE_TEMPERATURE);
+    fin.getFromFingrid(Fingridhandler::Electricity_consumption, "2021-03-15T13:11:51Z", "2021-03-18T13:11:51Z");
 
     return app.exec();
 }
