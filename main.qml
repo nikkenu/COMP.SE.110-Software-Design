@@ -64,4 +64,14 @@ Window {
             id: predictedCloudinessChart
         }
     }
+
+    Button {
+        id: dataButton
+        x: 40
+        y: 380
+        text: qsTr("Read data")
+        onClicked: {
+            chart.showData();
+        }
+    }
 }

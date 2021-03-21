@@ -24,7 +24,7 @@ void Chart::setTimeSeries(QtCharts::QLineSeries *timeSeries)
 
 void Chart::showData()
 {
-
+    qInfo() << "data button clicked";
 }
 
 void Chart::randomData()
