@@ -23,12 +23,22 @@ public:
     /*
      * Get current temperature, and observed wind and cloudiness.
      * Tags: t2m (temperature), ws_10min (windspeed) and n_man (cloudiness)
-     * If start_time empty -> current time.
+     * If start_time empty, assume from now.
     */
     void getObservedPhenomenon(QString start_time, QString end_time, QString place, QString parameter);
 
+    /*
+     * Forecast temperature and windness
+     * Tags: windspeed (windspeedms), temperature (temperature)
+     * If start_time empty, assume from now.
+    */
     void getPredictedPhenomenon(QString start_time, QString end_time, QString place, QString parameter);
 
+    /*
+     * Get AVG, MIN and MAX details from temperature
+     * Tags: AVG (TA_PT1H_AVG), MIN (TA_PT1H_MIN), MAX (TA_PT1H_MAX)
+     * If start_time empty, assume from now.
+    */
     void getTemperatureDetails(QString start_time, QString end_time, QString place, QString parameter);
 
 private:
