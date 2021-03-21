@@ -3,6 +3,6 @@ team ilmanenfemma
 
 No additional libraries etc. needed (as of now at least)
 
--handler.cpp/h files handle the APIs
-ilmanenfemma.pro and main.cpp obviously
+-handler.cpp/h files handle the APIs <br>
+ilmanenfemma.pro and main.cpp obviously <br>
 main.qml handles the view
