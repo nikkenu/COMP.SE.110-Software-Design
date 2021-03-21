@@ -25,3 +25,7 @@
     - Postman
     - Qt
     - QML
+
+## Self-evaluation (midterm)
+
+<p>Since the prototype phase, we have added a new, improved high-level description that doesn't necessarily change anything, but describes it better and clearer. When it comes to what is implemented so far, we have gone fully according to our better description. And we would imagine that our design is what the end result will look like, but maybe smaller additions will come in the future that we haven't thought about.</p>
