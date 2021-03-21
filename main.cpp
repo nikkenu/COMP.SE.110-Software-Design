@@ -3,6 +3,7 @@
 #include <QApplication>
 #include "fmihandler.h"
 #include "fingridhandler.h"
+#include "datahandler.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,6 +23,10 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     Fingridhandler fin;
+    DataHandler data;
+
+    QObject::connect(&fin, &Fingridhandler::sendData, &data, &DataHandler::receiveData);
+
     fin.getFromFingrid(Fingridhandler::Electricity_consumption, "2021-03-15T13:11:51Z", "2021-03-18T13:11:51Z");
 
     return app.exec();

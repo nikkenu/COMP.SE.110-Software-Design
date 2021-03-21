@@ -1,6 +1,7 @@
 QT += quick \
     widgets \
-    network
+    network \
+    xml
 
 CONFIG += c++11
 
@@ -10,6 +11,7 @@ CONFIG += c++11
 
 SOURCES += \
         baseapihandler.cpp \
+        datahandler.cpp \
         fingridhandler.cpp \
         fmihandler.cpp \
         main.cpp
@@ -29,5 +31,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     baseapihandler.h \
+    datahandler.h \
     fingridhandler.h \
     fmihandler.h
