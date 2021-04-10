@@ -3,6 +3,8 @@ import QtQuick.Window 2.14
 import QtCharts 2.3
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 1.4
+
 
 Window {
     width: 1000
@@ -74,6 +76,7 @@ Window {
             chart.showData();
         }
     }
+
 
     Component.onCompleted: {
          chart.timeSeries = consumptionChart

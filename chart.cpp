@@ -41,7 +41,7 @@ void Chart::setTimeSeries(QtCharts::QLineSeries *timeSeries)
             timeSeries_->attachAxis(valueAxis);
         }
     }
-    timeSeriesSignal();
+    emit timeSeriesSignal();
 }
 
 void Chart::showData()
