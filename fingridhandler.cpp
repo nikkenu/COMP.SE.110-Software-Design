@@ -1,7 +1,10 @@
 #include "fingridhandler.h"
 
-Fingridhandler::Fingridhandler()
+Fingridhandler::Fingridhandler(DataHandler *dataHandler)
 {
+    QObject::connect(this, &Fingridhandler::sendData, dataHandler,
+                     &DataHandler::receiveFingridData);
+
     m_baseUrl = "https://api.fingrid.fi/v1/variable/";
     m_apikey = "W8AlS1jgxO7XygNLzms35afCiMEltmZL2ohQkmSP";
 }

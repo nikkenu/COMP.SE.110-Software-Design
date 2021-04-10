@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    Fingridhandler fin;
     DataHandler data;
-    FMIhandler fmi;
+    FMIhandler fmi(&data);
+    Fingridhandler fin(&data);
 
     Controller controller(nullptr, &data, &chart);
 
