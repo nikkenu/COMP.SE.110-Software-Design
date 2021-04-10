@@ -13,10 +13,7 @@ class Controller : public QObject
     Q_OBJECT
 public:
     explicit Controller(QObject *parent = nullptr,
-                        DataHandler *data = nullptr,
                         Chart *chart = nullptr);
-
-
 
 
 signals:
@@ -30,7 +27,6 @@ public slots:
 private:
     Fingridhandler fin_;
     FMIhandler fmi_;
-    DataHandler* data_;
     Chart* chart_;
 
     void fixedCall();

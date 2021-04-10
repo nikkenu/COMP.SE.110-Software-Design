@@ -19,7 +19,7 @@ public:
     QString PREDICTED_WIND = "windspeedms";
     QString PREDICTED_TEMPERATURE = "temperature";
 
-    FMIhandler(DataHandler *dataHandler);
+    FMIhandler();
 
     /*
      * Get current temperature, and observed wind and cloudiness.

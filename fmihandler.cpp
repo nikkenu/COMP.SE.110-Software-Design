@@ -1,8 +1,9 @@
 #include "fmihandler.h"
 
-FMIhandler::FMIhandler(DataHandler *dataHandler)
+FMIhandler::FMIhandler()
 {
-    QObject::connect(this, &FMIhandler::sendData, dataHandler,
+    DataHandler &dataHandler = DataHandler::getInstance();
+    QObject::connect(this, &FMIhandler::sendData, &dataHandler,
                        &DataHandler::receiveFMIData);
 }
 

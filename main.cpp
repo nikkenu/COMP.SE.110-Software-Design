@@ -27,8 +27,7 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    DataHandler data;
-    Controller controller(nullptr, &data, &chart);
+    Controller controller(nullptr, &chart);
 
     return app.exec();
 }

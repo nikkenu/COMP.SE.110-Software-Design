@@ -1,19 +1,16 @@
 #include "controller.h"
 
 Controller::Controller(QObject *parent,
-                       DataHandler *data,
                        Chart *chart) :
     QObject(parent),
-    fin_(data),
-    fmi_(data),
-    data_(data),
     chart_(chart)
 {
-    connect(data_, &DataHandler::sendDataToChart,
+    DataHandler &dataHandler = DataHandler::getInstance();
+    connect(&dataHandler, &DataHandler::sendDataToChart,
             chart_, &Chart::receiveData);
 
     connect(chart_, &Chart::getData,
-            data_, &DataHandler::dataSignal);
+            &dataHandler, &DataHandler::dataSignal);
 
     // chart sends signals to controller
     connect(chart_, &Chart::makeRequest,
