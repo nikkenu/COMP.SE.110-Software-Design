@@ -4,14 +4,13 @@ Controller::Controller(QObject *parent,
                        DataHandler *data,
                        Chart *chart) :
     QObject(parent),
+    fin_(data),
+    fmi_(data),
     data_(data),
     chart_(chart)
 {
     connect(data_, &DataHandler::sendDataToChart,
             chart_, &Chart::receiveData);
-
-    connect(&fin_ ,&Fingridhandler::sendData,
-            data_, &DataHandler::receiveData);
 
     connect(chart_, &Chart::getData,
             data_, &DataHandler::dataSignal);

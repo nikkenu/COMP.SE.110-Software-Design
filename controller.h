@@ -20,8 +20,10 @@ public:
 
 
 signals:
+    void getData();
 
 public slots:
+
 
 
 
