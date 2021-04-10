@@ -3,9 +3,8 @@
 
 #include <QObject>
 #include <QXmlStreamReader>
-
 #include <vector>
-
+#include <QDateTime>
 
 class DataHandler : public QObject
 {
@@ -17,13 +16,13 @@ public:
     void parseFMIData(const QByteArray &data);
 
     struct time_series_element {
-        QString start_time;
-        QString end_time;
+        QDateTime start_time;
+        QDateTime end_time;
         QString value;
     };
 
     struct fmi_data_element {
-        QString time;
+        QDateTime time;
         QString value;
     };
 

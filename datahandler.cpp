@@ -28,8 +28,12 @@ void DataHandler::parseFingridData(const QByteArray &data)
             time_series_element tmp = {};
             while (!child.isNull()) {
                 if (child.tagName() == "value") tmp.value = child.text();
-                if (child.tagName() == "start_time") tmp.start_time = child.text();
-                if (child.tagName() == "end_time") tmp.end_time = child.text();
+                if (child.tagName() == "start_time") {
+                    tmp.start_time = QDateTime::fromString(child.text(), Qt::ISODate);
+                }
+                if (child.tagName() == "end_time") {
+                    tmp.end_time = QDateTime::fromString(child.text(), Qt::ISODate);
+                }
                 child = child.nextSibling().toElement();
             }
             values.push_back(tmp);
@@ -66,7 +70,9 @@ void DataHandler::parseFMIData(const QByteArray &data)
            QDomElement child = bswfsElement.firstChild().toElement();
            fmi_data_element tmp = {};
            while(!child.isNull()) {
-               if(child.tagName() == "BsWfs:Time") tmp.time = child.text();
+               if(child.tagName() == "BsWfs:Time") {
+                   tmp.time = QDateTime::fromString(child.text(), Qt::ISODate);
+               }
                if(child.tagName() == "BsWfs:ParameterValue") tmp.value = child.text();
                child = child.nextSibling().toElement();
            }
