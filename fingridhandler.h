@@ -2,6 +2,7 @@
 #define FINGRIDHANDLER_H
 
 #include "baseapihandler.h"
+#include "datahandler.h"
 
 class Fingridhandler: public BaseAPIhandler
 {
@@ -26,7 +27,7 @@ public:
         Wind_power_production = 245
     };
 
-    Fingridhandler();
+    Fingridhandler(DataHandler *dataHandler);
 
     /*
      * Fingrid API call.

@@ -2,6 +2,7 @@
 #define FMIHANDLER_H
 
 #include "baseapihandler.h"
+#include "datahandler.h"
 
 class FMIhandler: public BaseAPIhandler
 {
@@ -18,7 +19,7 @@ public:
     QString PREDICTED_WIND = "windspeedms";
     QString PREDICTED_TEMPERATURE = "temperature";
 
-    FMIhandler();
+    FMIhandler(DataHandler *dataHandler);
 
     /*
      * Get current temperature, and observed wind and cloudiness.
