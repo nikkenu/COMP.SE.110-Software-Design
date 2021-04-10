@@ -9,8 +9,18 @@
 class DataHandler : public QObject
 {
     Q_OBJECT
+
 public:
-    explicit DataHandler(QObject *parent = nullptr);
+    DataHandler();
+
+    static DataHandler& getInstance()
+    {
+        if(instance == 0) {
+            instance = new DataHandler();
+        }
+        return *instance;
+    }
+
 
     void parseFingridData(const QByteArray &data);
     void parseFMIData(const QByteArray &data);
@@ -37,9 +47,11 @@ signals:
 
 
 private:
+    static DataHandler *instance;
 
     // obviously this has to be reworked but works as a basis for the xml/json/whatever parsing
     QByteArray m_data;
 };
+
 
 #endif // DATAHANDLER_H

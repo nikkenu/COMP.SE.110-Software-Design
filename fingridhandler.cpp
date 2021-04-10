@@ -1,8 +1,9 @@
 #include "fingridhandler.h"
 
-Fingridhandler::Fingridhandler(DataHandler *dataHandler)
+Fingridhandler::Fingridhandler()
 {
-    QObject::connect(this, &Fingridhandler::sendData, dataHandler,
+    DataHandler &dataHandler = DataHandler::getInstance();
+    QObject::connect(this, &Fingridhandler::sendData, &dataHandler,
                      &DataHandler::receiveFingridData);
 
     m_baseUrl = "https://api.fingrid.fi/v1/variable/";

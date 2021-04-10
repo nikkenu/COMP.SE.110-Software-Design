@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QDomDocument>
 
-DataHandler::DataHandler(QObject *parent) : QObject(parent)
+DataHandler::DataHandler()
 {
 
 }
@@ -100,3 +100,6 @@ void DataHandler::dataSignal()
 {
     //emit sendDataToChart(values);
 }
+
+
+DataHandler *DataHandler::instance = 0;

@@ -27,7 +27,7 @@ public:
         Wind_power_production = 245
     };
 
-    Fingridhandler(DataHandler *dataHandler);
+    Fingridhandler();
 
     /*
      * Fingrid API call.
