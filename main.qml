@@ -74,6 +74,7 @@ Window {
         text: qsTr("Read data")
         onClicked: {
             chart.showData();
+            chart.makeRequest();
         }
     }
 

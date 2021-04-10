@@ -36,6 +36,8 @@ signals:
     void timeSeriesSignal();
     void getData();
 
+    void makeRequest();
+
 
 private:
     QtCharts::QLineSeries* timeSeries_;

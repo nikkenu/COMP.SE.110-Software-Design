@@ -15,6 +15,10 @@ Controller::Controller(QObject *parent,
     connect(chart_, &Chart::getData,
             data_, &DataHandler::dataSignal);
 
+    // chart sends signals to controller
+    connect(chart_, &Chart::makeRequest,
+            this, &Controller::apiRequest);
+
     fixedCall(); // makes one fixed call. only for testing these connections actually work.
 
 }
@@ -22,4 +26,9 @@ Controller::Controller(QObject *parent,
 void Controller::fixedCall()
 {
     fin_.getFromFingrid(Fingridhandler::Electricity_consumption, "2021-03-15T13:11:51Z", "2021-03-18T13:11:51Z");
+}
+
+void Controller::apiRequest()
+{
+    fixedCall();
 }

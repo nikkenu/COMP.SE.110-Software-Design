@@ -28,9 +28,6 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     DataHandler data;
-    FMIhandler fmi(&data);
-    Fingridhandler fin(&data);
-
     Controller controller(nullptr, &data, &chart);
 
     return app.exec();

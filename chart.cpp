@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QValueAxis>
 
-const QList<MinMax> ELECTICITY_CONSUMPTION_LIMTS = { { 0, 5000}, { 8500, 12500} };
+const QList<MinMax> ELECTICITY_CONSUMPTION_LIMTS = { { 0, 200}, { 8500, 12500} };
 
 Chart::Chart(QObject *parent) : QObject(parent), timeSeries_(new QtCharts::QLineSeries)
 {

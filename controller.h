@@ -23,7 +23,7 @@ signals:
     void getData();
 
 public slots:
-
+    void apiRequest();
 
 
 
