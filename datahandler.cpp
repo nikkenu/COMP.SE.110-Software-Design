@@ -9,6 +9,7 @@ DataHandler::DataHandler(QObject *parent) : QObject(parent)
 
 void DataHandler::receiveData(QByteArray data)
 {
+    //qDebug() << "bysanttilaista dädää" << QString(data);
     m_data = data;
     printXml(data);
 
@@ -51,11 +52,6 @@ void DataHandler::printXml(const QByteArray &data)
         n = n.nextSibling();
     }
 
-    printData();
-
-    // just here for now, need to refactor this out
-
-    //emit sendDataToChart(values);
 }
 
 
