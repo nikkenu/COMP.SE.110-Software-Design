@@ -13,6 +13,7 @@ CONFIG += c++11
 SOURCES += \
         baseapihandler.cpp \
         chart.cpp \
+        controller.cpp \
         datahandler.cpp \
         fingridhandler.cpp \
         fmihandler.cpp \
@@ -34,6 +35,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     baseapihandler.h \
     chart.h \
+    controller.h \
     datahandler.h \
     fingridhandler.h \
     fmihandler.h
