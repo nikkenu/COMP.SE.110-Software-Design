@@ -96,26 +96,61 @@ Window {
         CheckBox {
             id: temperatureCheckBox
             text: qsTr("Temperature")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: observedWindCheckBox
             text: qsTr("Observed wind")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: observedCloudinessCheckBox
             text: qsTr("Observed cloudiness")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: predictedWindCheckBox
             text: qsTr("Predicted wind")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: predictedTemperatureCheckBox
             text: qsTr("Predicted temperature")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
     }
 
@@ -136,36 +171,85 @@ Window {
         CheckBox {
             id: electricityConsumptionCheckBox
             text: qsTr("Electricity consumption in Finland")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: eConForeCheckBox
             text: qsTr("Electricity consumption forecast for the nesxt 24 hours")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: tProdPredCheckBox
             text: qsTr("A tentative production prediction for the next 24 hours as hourly energy")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: eProdCheckBox
             text: qsTr("Electricity production")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: windProdCheckBox
             text: qsTr("Wind power production forecast")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: nuclearProdCheckBox
             text: qsTr("Nuclear power production")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: hydroProdCheckBox
             text: qsTr("Hydro power production")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
     }
 
@@ -186,16 +270,37 @@ Window {
         CheckBox {
             id: tempAvgCheckBox
             text: qsTr("Average")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: tempMinCheckBox
             text: qsTr("Minimum")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
 
         CheckBox {
             id: tempMaxCheckBox
             text: qsTr("Maximum")
+            onCheckedStateChanged: function() {
+                if(checkedState) {
+                    // Make API request
+                } else {
+                    // Remove lineseries
+                }
+            }
         }
     }
 
@@ -254,9 +359,6 @@ Window {
         }
 
     }
-
-
-
 
     Component.onCompleted: {
         chart.timeSeries = consumptionChart
