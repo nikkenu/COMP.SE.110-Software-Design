@@ -7,6 +7,7 @@ import QtQuick.Controls 1.4
 
 
 Window {
+    id: window
     width: 1000
     height: 720
     visible: true
@@ -14,65 +15,32 @@ Window {
 
     ChartView {
         id: electricityChart
-        x: 10
-        y: 10
-        width: 480
-        height: 350
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 360
+        anchors.rightMargin: 20
+        anchors.leftMargin: 10
+        anchors.topMargin: 10
         antialiasing: true
 
         LineSeries {
             id: consumptionChart
         }
-        LineSeries {
-            id: consumptionForecastChart
-        }
-        LineSeries {
-            id: productionPredictionChart
-        }
-        LineSeries {
-            id: productionChart
-        }
-        LineSeries {
-            id: windProductionChart
-        }
-        LineSeries {
-            id: nuclearProductionChart
-        }
-        LineSeries {
-            id: hydroProductionChart
-        }
-    }
-
-    ChartView {
-        id: weatherChart
-        x: 510
-        y: 10
-        width: 480
-        height: 350
-        antialiasing: true
-
-        LineSeries {
-            id: temperatureChart
-        }
-        LineSeries {
-            id: observedWindChart
-        }
-        LineSeries {
-            id: observedCloudinessChart
-        }
-        LineSeries {
-            id: predictedWindChart
-        }
-        LineSeries {
-            id: predictedCloudinessChart
-        }
     }
 
     Button {
         id: dataButton
-        x: 843
-        y: 633
         text: qsTr("Read data")
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 82
+        anchors.leftMargin: 843
+        anchors.bottomMargin: 64
+        anchors.topMargin: 633
         onClicked: {
             chart.showData();
             chart.makeRequest();
@@ -81,10 +49,14 @@ Window {
 
     Column {
         id: column
-        x: 10
-        y: 366
-        width: 203
-        height: 330
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 787
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 24
+        anchors.topMargin: 366
         spacing: 5
 
         Text {
@@ -156,10 +128,14 @@ Window {
 
     Column {
         id: column1
-        x: 219
-        y: 366
-        width: 406
-        height: 330
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 375
+        anchors.leftMargin: 219
+        anchors.bottomMargin: 24
+        anchors.topMargin: 366
         spacing: 5
 
         Text {
@@ -173,7 +149,8 @@ Window {
             text: qsTr("Electricity consumption in Finland")
             onCheckedStateChanged: function() {
                 if(checkedState) {
-                    // Make API request
+                    chart.showData();
+                    chart.makeRequest();
                 } else {
                     // Remove lineseries
                 }
@@ -182,7 +159,7 @@ Window {
 
         CheckBox {
             id: eConForeCheckBox
-            text: qsTr("Electricity consumption forecast for the nesxt 24 hours")
+            text: qsTr("Electricity consumption forecast for the next 24 hours")
             onCheckedStateChanged: function() {
                 if(checkedState) {
                     // Make API request
@@ -255,10 +232,14 @@ Window {
 
     Column {
         id: column2
-        x: 631
-        y: 366
-        width: 143
-        height: 330
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 226
+        anchors.leftMargin: 631
+        anchors.bottomMargin: 24
+        anchors.topMargin: 366
         spacing: 5
 
         Text {
@@ -306,10 +287,14 @@ Window {
 
     Column {
         id: column3
-        x: 780
-        y: 366
-        width: 200
-        height: 239
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 20
+        anchors.leftMargin: 780
+        anchors.bottomMargin: 115
+        anchors.topMargin: 366
         spacing: 5
 
         Text {
@@ -368,6 +353,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:0.75}D{i:1}D{i:3}D{i:4}D{i:11}D{i:20}D{i:25}
 }
 ##^##*/
