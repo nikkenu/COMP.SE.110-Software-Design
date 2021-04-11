@@ -15,14 +15,10 @@ Window {
 
     ChartView {
         id: electricityChart
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 360
-        anchors.rightMargin: 20
-        anchors.leftMargin: 10
-        anchors.topMargin: 10
+        x: 10
+        y: 10
+        width: 970
+        height: 350
         antialiasing: true
 
         LineSeries {
@@ -49,14 +45,10 @@ Window {
 
     Column {
         id: column
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.rightMargin: 787
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 24
-        anchors.topMargin: 366
+        x: 10
+        y: 366
+        width: 203
+        height: 330
         spacing: 5
 
         Text {
@@ -128,14 +120,10 @@ Window {
 
     Column {
         id: column1
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.rightMargin: 375
-        anchors.leftMargin: 219
-        anchors.bottomMargin: 24
-        anchors.topMargin: 366
+        x: 219
+        y: 366
+        width: 406
+        height: 330
         spacing: 5
 
         Text {
@@ -232,14 +220,10 @@ Window {
 
     Column {
         id: column2
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.rightMargin: 226
-        anchors.leftMargin: 631
-        anchors.bottomMargin: 24
-        anchors.topMargin: 366
+        x: 631
+        y: 366
+        width: 143
+        height: 330
         spacing: 5
 
         Text {
@@ -287,14 +271,10 @@ Window {
 
     Column {
         id: column3
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.rightMargin: 20
-        anchors.leftMargin: 780
-        anchors.bottomMargin: 115
-        anchors.topMargin: 366
+        x: 780
+        y: 366
+        width: 200
+        height: 239
         spacing: 5
 
         Text {
