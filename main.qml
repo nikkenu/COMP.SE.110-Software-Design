@@ -29,8 +29,10 @@ Window {
             width: column.width
             height: column.height/2
             backgroundColor: "#00000000"
-            LineSeries {
-                id: consumptionChart
+            visible: true
+
+            onSeriesAdded: {
+                console.log("Series added:", series.name, "start date: ", dateFromTextField.text, "end date: ", dateToTextField.text)
             }
 
         }
@@ -58,10 +60,11 @@ Window {
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.showData();
-                            chart.makeRequest();
+                            var tmp = line.createSeries(LineSeries, "electricity");
                         } else {
                             // Remove lineseries
+
+                            line.removeSeries(line.series("electricity"))
                         }
                     }
                 }
@@ -145,6 +148,9 @@ Window {
                 Button {
                     id: refreshButton
                     text: qsTr("Refresh")
+                    onClicked: line.createSeries(LineSeries, "yolo")
+
+
                 }
             }
 
@@ -152,8 +158,8 @@ Window {
     }
 
     Component.onCompleted: {
-        chart.timeSeries = consumptionChart
     }
+
 
 }
 
