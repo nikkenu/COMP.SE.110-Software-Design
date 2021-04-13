@@ -26,12 +26,6 @@ public:
     void parseFMIData(const QByteArray &data);
 
     struct time_series_element {
-        QDateTime start_time;
-        QDateTime end_time;
-        QString value;
-    };
-
-    struct fmi_data_element {
         QDateTime time;
         QString value;
     };

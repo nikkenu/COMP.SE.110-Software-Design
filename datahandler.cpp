@@ -29,10 +29,7 @@ void DataHandler::parseFingridData(const QByteArray &data)
             while (!child.isNull()) {
                 if (child.tagName() == "value") tmp.value = child.text();
                 if (child.tagName() == "start_time") {
-                    tmp.start_time = QDateTime::fromString(child.text(), Qt::ISODate);
-                }
-                if (child.tagName() == "end_time") {
-                    tmp.end_time = QDateTime::fromString(child.text(), Qt::ISODate);
+                    tmp.time = QDateTime::fromString(child.text(), Qt::ISODate);
                 }
                 child = child.nextSibling().toElement();
             }
@@ -45,7 +42,7 @@ void DataHandler::parseFingridData(const QByteArray &data)
     qDebug();
     qDebug() << "---Fingrid Data---";
     for(const auto& i : values) {
-        qDebug() << "Start_time: " << i.start_time << ", " << "End_time: " << i.end_time << ", " << "value: " << i.value;
+        qDebug() << "Time: " << i.time << ", " << "value: " << i.value;
     }
     qDebug() << "---Fingrid End---";
 
@@ -54,7 +51,7 @@ void DataHandler::parseFingridData(const QByteArray &data)
 
 void DataHandler::parseFMIData(const QByteArray &data)
 {
-    std::vector<fmi_data_element> values = {};
+    std::vector<time_series_element> values = {};
 
     QDomDocument doc;
     doc.setContent(data);
@@ -68,7 +65,7 @@ void DataHandler::parseFMIData(const QByteArray &data)
        QDomElement bswfsElement = wfsMember.toElement().firstChild().toElement();
        if(!bswfsElement.isNull()) {
            QDomElement child = bswfsElement.firstChild().toElement();
-           fmi_data_element tmp = {};
+           time_series_element tmp = {};
            while(!child.isNull()) {
                if(child.tagName() == "BsWfs:Time") {
                    tmp.time = QDateTime::fromString(child.text(), Qt::ISODate);
@@ -89,6 +86,8 @@ void DataHandler::parseFMIData(const QByteArray &data)
         qDebug() << "Time: " << i.time << ", " << "value: " << i.value;
     }
     qDebug() << "---FMI End---";
+
+    emit sendDataToChart(values);
 }
 
 void DataHandler::receiveFingridData(QByteArray data)

@@ -4,7 +4,7 @@ import QtCharts 2.3
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
-
+//import Chart 1.0
 
 Window {
     id: window
@@ -12,6 +12,15 @@ Window {
     height: 720
     visible: true
     property alias rowLayoutWidth: rowLayout.width
+
+    Connections {
+        target: chart
+        onTimeSeriesReady: function(x){
+            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, asd, electricityValueYaxis);
+            chart.setLineSeries(tmp);
+        }
+
+    }
 
     Column {
         id: column
@@ -25,12 +34,27 @@ Window {
         anchors.topMargin: 0
 
         ChartView {
-            id: line
+            id: chartView
             width: column.width
             height: column.height/2
             backgroundColor: "#00000000"
-            LineSeries {
-                id: consumptionChart
+
+            ValueAxis {
+                id: asd
+                min: 0
+                max: 10
+            }
+
+            DateTimeAxis {
+                id: dateTimeXaxis
+                min: "2020-03-15T13:11:51Z"
+                max: "2021-03-18T13:11:51Z"
+            }
+
+            ValueAxis {
+                id: electricityValueYaxis
+                min: 0
+                max: 10
             }
 
         }
@@ -58,10 +82,9 @@ Window {
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.showData();
-                            chart.makeRequest();
+                            chart.getData("124");
                         } else {
-                            // Remove lineseries
+                            chartView.removeSeries("ASD");
                         }
                     }
                 }
@@ -149,10 +172,7 @@ Window {
             }
 
         }
-    }
 
-    Component.onCompleted: {
-        chart.timeSeries = consumptionChart
     }
 
 }
