@@ -168,6 +168,11 @@ Window {
                 Button {
                     id: refreshButton
                     text: qsTr("Refresh")
+
+                    onClicked:
+                    {
+                        chart.changeAxisX(dateFromTextField.text, dateToTextField.text)
+                    }
                 }
             }
 

@@ -25,6 +25,11 @@ void Chart::getData(const QString &title)
     emit apiRequest(title);
 }
 
+void Chart::changeAxisX(QDateTime startDate, QDateTime endDate)
+{
+    qDebug() << "Chart::changeAxisX : " << startDate << " + " << endDate;
+}
+
 void Chart::receiveData(std::vector<DataHandler::time_series_element> data)
 {
     this->timeSeriesData = data;
