@@ -13,9 +13,15 @@ Chart::~Chart()
 
 void Chart::setLineSeries(QLineSeries *lineSeries)
 {
-    // Sample data
-    for(int i = 0; i < 10; i++) {
-        lineSeries->append(i, i);
+    for(const auto& i : timeSeriesData)
+    {
+        qreal x,y;
+        auto tmp = i.value;
+        y = tmp.toDouble();
+        auto tmp2 = i.time;
+        x = tmp2.toMSecsSinceEpoch();
+
+        lineSeries->append(x,y);
     }
 }
 
@@ -25,14 +31,9 @@ void Chart::getData(const QString &title)
     emit apiRequest(title);
 }
 
-void Chart::changeAxisX(QDateTime startDate, QDateTime endDate)
-{
-    qDebug() << "Chart::changeAxisX : " << startDate << " + " << endDate;
-}
-
 void Chart::receiveData(std::vector<DataHandler::time_series_element> data)
 {
     this->timeSeriesData = data;
     qDebug() << "here";
-    emit timeSeriesReady("ASD");
+    emit timeSeriesReady("Electricity consumption in Finland");
 }

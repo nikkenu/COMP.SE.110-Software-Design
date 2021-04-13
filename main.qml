@@ -16,7 +16,7 @@ Window {
     Connections {
         target: chart
         onTimeSeriesReady: function(x){
-            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, asd, electricityValueYaxis);
+            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, dateTimeXaxis, electricityValueYaxis);
             chart.setLineSeries(tmp);
         }
 
@@ -47,14 +47,14 @@ Window {
 
             DateTimeAxis {
                 id: dateTimeXaxis
-                min: "2020-03-15T13:11:51Z"
+                min: "2021-03-15T13:11:51Z"
                 max: "2021-03-18T13:11:51Z"
             }
 
             ValueAxis {
                 id: electricityValueYaxis
                 min: 0
-                max: 10
+                max: 15000
             }
 
         }
@@ -84,7 +84,7 @@ Window {
                         if(checkedState) {
                             chart.getData("124");
                         } else {
-                            chartView.removeSeries(chartView.series("ASD"));
+                            chartView.removeSeries(chartView.series("Electricity consumption in Finland"));
                         }
                     }
                 }
@@ -171,7 +171,8 @@ Window {
 
                     onClicked:
                     {
-                        chart.changeAxisX(dateFromTextField.text, dateToTextField.text)
+                        dateTimeXaxis.min = dateFromTextField.text
+                        dateTimeXaxis.max = dateToTextField.text
                     }
                 }
             }

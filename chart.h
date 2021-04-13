@@ -30,7 +30,6 @@ public:
 
     Q_INVOKABLE void setLineSeries(QLineSeries *lineSeries);
     Q_INVOKABLE void getData(const QString &title);
-    Q_INVOKABLE void changeAxisX(QDateTime startDate, QDateTime endDate);
 
 
 public slots:
