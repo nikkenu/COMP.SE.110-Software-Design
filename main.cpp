@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     Chart chart;
     engine.rootContext()->setContextProperty("chart", &chart);
+    //qmlRegisterType<Chart>("Chart", 1, 0, "Chart");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

@@ -4,7 +4,7 @@ import QtCharts 2.3
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
-
+//import Chart 1.0
 
 Window {
     id: window
@@ -12,6 +12,8 @@ Window {
     height: 720
     visible: true
     property alias rowLayoutWidth: rowLayout.width
+
+
 
     Column {
         id: column
@@ -153,6 +155,7 @@ Window {
             }
 
         }
+
     }
 
 }

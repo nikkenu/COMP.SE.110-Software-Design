@@ -36,6 +36,8 @@ public slots:
 signals:
     void apiRequest(QString title);
 
+    void timeSeriesReady(QString title);
+
     //void timeSeriesSignal();
     //void getData();
 
