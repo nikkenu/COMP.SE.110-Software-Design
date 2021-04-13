@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QValueAxis>
 
-const QList<MinMax> ELECTICITY_CONSUMPTION_LIMTS = { { 0, 200}, { 8500, 12500} };
+const QList<MinMax> ELECTICITY_CONSUMPTION_LIMTS = { { 0, 200}, { 0, 15} };
 
 Chart::Chart(QObject *parent) : QObject(parent), timeSeries_(new QtCharts::QLineSeries)
 {
@@ -63,7 +63,7 @@ void Chart::receiveData(std::vector<DataHandler::time_series_element> data)
         qreal x,y;
         auto tmp = i.value;
         x=cnt;
-        y= tmp.toDouble();
+        y= tmp.toDouble()/1000;
         cnt++;
 
         timeSeries_->append(x,y);

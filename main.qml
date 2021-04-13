@@ -49,12 +49,84 @@ Window {
 
                 Text {
                     id: text2
+                    text: qsTr("Weather")
+                    font.pixelSize: 12
+                }
+
+                CheckBox {
+                    id: temperatureCheckBox
+                    text: qsTr("Temperature")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: obsWindCheckBox
+                    text: qsTr("Observed wind")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: obsCloudinessCheckBox
+                    text: qsTr("Observed cloudiness")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: predWindCheckBox
+                    text: qsTr("Predicted wind")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: predCloudinessCheckBox
+                    text: qsTr("Predicted cloudiness")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+            }
+            Column {
+                id: column2
+                height: 330
+                padding: 10
+                spacing: 5
+
+                Text {
+                    id: text3
                     text: qsTr("Electricity")
                     font.pixelSize: 12
                 }
 
                 CheckBox {
-                    id: electricityConsumptionCheckBox
+                    id: eConCheckBox
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
@@ -67,8 +139,68 @@ Window {
                 }
 
                 CheckBox {
+                    id: eConForecastCheckBox
+                    text: qsTr("Electricity consumption forecast for the next 24 hours")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: eProdPredictionCheckBox
+                    text: qsTr("A tentative production prediction for the next 24 hours as hourly energy")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // functionality
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
                     id: eProdCheckBox
                     text: qsTr("Electricity production")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: windPowerProdForecastCheckBox
+                    text: qsTr("Wind power production forecast")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: nuclearProdCheckBox
+                    text: qsTr("Nuclear power production")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            // Make API request
+                        } else {
+                            // Remove lineseries
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: hydroProdCheckBox
+                    text: qsTr("Hydro power production")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
                             // Make API request
