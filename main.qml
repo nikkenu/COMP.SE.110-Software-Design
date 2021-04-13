@@ -16,7 +16,7 @@ Window {
     Connections {
         target: chart
         onTimeSeriesReady: function(x){
-            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, dateTimeXaxis, electricityValueYaxis);
+            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, asd, electricityValueYaxis);
             chart.setLineSeries(tmp);
         }
 
@@ -39,12 +39,22 @@ Window {
             height: column.height/2
             backgroundColor: "#00000000"
 
+            ValueAxis {
+                id: asd
+                min: 0
+                max: 10
+            }
+
             DateTimeAxis {
                 id: dateTimeXaxis
+                min: "2020-03-15T13:11:51Z"
+                max: "2021-03-18T13:11:51Z"
             }
 
             ValueAxis {
                 id: electricityValueYaxis
+                min: 0
+                max: 10
             }
 
         }
@@ -74,7 +84,7 @@ Window {
                         if(checkedState) {
                             chart.getData("124");
                         } else {
-                            // Remove lineseries
+                            chartView.removeSeries("ASD");
                         }
                     }
                 }

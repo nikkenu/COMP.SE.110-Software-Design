@@ -13,8 +13,9 @@ Chart::~Chart()
 
 void Chart::setLineSeries(QLineSeries *lineSeries)
 {
-    for(auto i : timeSeriesData) {
-        qDebug() << i.value;
+    // Sample data
+    for(int i = 0; i < 10; i++) {
+        lineSeries->append(i, i);
     }
 }
 
