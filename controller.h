@@ -20,7 +20,7 @@ signals:
     void getData();
 
 public slots:
-    void apiRequest();
+    void apiRequest(QString title);
 
 
 
@@ -28,8 +28,6 @@ private:
     Fingridhandler fin_;
     FMIhandler fmi_;
     Chart* chart_;
-
-    void fixedCall();
 
 };
 

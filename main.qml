@@ -29,8 +29,13 @@ Window {
             width: column.width
             height: column.height/2
             backgroundColor: "#00000000"
-            LineSeries {
-                id: consumptionChart
+
+            DateTimeAxis {
+                id: dateTimeXaxis
+            }
+
+            ValueAxis {
+                id: electricityValueYaxis
             }
 
         }
@@ -58,8 +63,7 @@ Window {
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.showData();
-                            chart.makeRequest();
+                            chart.getData("electricityConsumption");
                         } else {
                             // Remove lineseries
                         }
@@ -149,10 +153,6 @@ Window {
             }
 
         }
-    }
-
-    Component.onCompleted: {
-        chart.timeSeries = consumptionChart
     }
 
 }
