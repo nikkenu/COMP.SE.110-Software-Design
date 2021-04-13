@@ -7,17 +7,15 @@ Controller::Controller(QObject *parent,
 {
     DataHandler &dataHandler = DataHandler::getInstance();
 
-    /*connect(&dataHandler, &DataHandler::sendDataToChart,
+    connect(&dataHandler, &DataHandler::sendDataToChart,
             chart_, &Chart::receiveData);
 
-    connect(chart_, &Chart::getData,
+    /*connect(chart_, &Chart::getData,
             &dataHandler, &DataHandler::dataSignal);*/
 
     // chart sends signals to controller
     connect(chart_, &Chart::apiRequest,
             this, &Controller::apiRequest);
-
-    //fin_.getFromFingrid(Fingridhandler::Electricity_consumption, "2021-03-15T13:11:51Z", "2021-03-18T13:11:51Z");
 }
 
 void Controller::apiRequest(QString title)

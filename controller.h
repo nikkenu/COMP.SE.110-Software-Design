@@ -23,7 +23,6 @@ public slots:
     void apiRequest(QString title);
 
 
-
 private:
     Fingridhandler fin_;
     FMIhandler fmi_;

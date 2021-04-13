@@ -31,7 +31,7 @@ public:
 
 
 public slots:
-    //void receiveData(std::vector<DataHandler::time_series_element> data);
+    void receiveData(std::vector<DataHandler::time_series_element> data);
 
 signals:
     void apiRequest(QString title);
@@ -44,6 +44,7 @@ signals:
 
 private:
    // QtCharts::QLineSeries* timeSeries_;
+   std::vector<DataHandler::time_series_element> timeSeriesData = {};
 
 
 };

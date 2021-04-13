@@ -63,7 +63,7 @@ Window {
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.getData("electricityConsumption");
+                            chart.getData("124");
                         } else {
                             // Remove lineseries
                         }
