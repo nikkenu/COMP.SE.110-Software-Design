@@ -5,7 +5,7 @@
 #include <QChart>
 #include <QLineSeries>
 #include <QObject>
-
+#include <QtCharts>
 #include "datahandler.h"
 
 struct MinMax
@@ -27,6 +27,7 @@ public:
     //void setTimeSeries(QtCharts::QLineSeries *timeSeries);
     //Q_INVOKABLE void showData();
 
+    Q_INVOKABLE void setLineSeries(QLineSeries *lineSeries);
     Q_INVOKABLE void getData(const QString &title);
 
 

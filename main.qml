@@ -13,7 +13,14 @@ Window {
     visible: true
     property alias rowLayoutWidth: rowLayout.width
 
+    Connections {
+        target: chart
+        onTimeSeriesReady: function(x){
+            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, dateTimeXaxis, electricityValueYaxis);
+            chart.setLineSeries(tmp);
+        }
 
+    }
 
     Column {
         id: column
@@ -27,7 +34,7 @@ Window {
         anchors.topMargin: 0
 
         ChartView {
-            id: line
+            id: chartView
             width: column.width
             height: column.height/2
             backgroundColor: "#00000000"

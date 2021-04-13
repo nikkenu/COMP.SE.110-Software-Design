@@ -11,6 +11,13 @@ Chart::~Chart()
 
 }
 
+void Chart::setLineSeries(QLineSeries *lineSeries)
+{
+    for(auto i : timeSeriesData) {
+        qDebug() << i.value;
+    }
+}
+
 void Chart::getData(const QString &title)
 {
     qDebug() << "getData";
