@@ -84,7 +84,7 @@ Window {
                         if(checkedState) {
                             chart.getData("124");
                         } else {
-                            chartView.removeSeries("ASD");
+                            chartView.removeSeries(chartView.series("ASD"));
                         }
                     }
                 }
