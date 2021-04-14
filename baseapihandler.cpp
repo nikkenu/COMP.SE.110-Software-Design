@@ -24,11 +24,6 @@ void BaseAPIhandler::readyRead()
         //qInfo() << "Reply exists";
         //qInfo() << reply->readAll();
 
-        //qDebug() << reply->readAll();
-
-        //emit sendData(reply->readAll());
-        //reply->deleteLater();
-
 }
 
 void BaseAPIhandler::finished(QNetworkReply *reply)
@@ -53,6 +48,7 @@ void BaseAPIhandler::error()
 void BaseAPIhandler::requestCompleted(QNetworkReply *reply)
 {
     QByteArray content{ reply->readAll() };
-    emit sendData(content);
+    emit sendData(content, ID);
+    ID=""; //reset id
 }
 

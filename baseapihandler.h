@@ -13,7 +13,7 @@ public:
     explicit BaseAPIhandler(QObject *parent = nullptr);
 
 signals:
-    void sendData(QByteArray data);
+    void sendData(QByteArray data, QString ID);
 
 public slots:
     void get(QNetworkRequest request);
@@ -29,6 +29,7 @@ private slots:
 protected:
     QString m_baseUrl;
     QByteArray m_apikey;
+    QString ID; // API are we calling? Also sends to ID info back to the chart for context.
 
 private:
     QNetworkAccessManager m_manager;

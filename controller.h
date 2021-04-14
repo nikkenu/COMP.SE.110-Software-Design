@@ -5,7 +5,7 @@
 
 #include "fingridhandler.h"
 #include "fmihandler.h"
-#include "datahandler.h"
+//#include "datahandler.h"
 #include "chart.h"
 
 class Controller : public QObject

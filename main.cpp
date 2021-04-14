@@ -4,7 +4,7 @@
 #include <QQmlContext>
 #include "fmihandler.h"
 #include "fingridhandler.h"
-#include "datahandler.h"
+//#include "datahandler.h"
 #include "chart.h"
 #include "controller.h"
 
@@ -17,7 +17,12 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    Chart chart;
+
+    xmlParser parser;
+    FMIhandler fmi;
+    Fingridhandler fin;
+
+    Chart chart(nullptr, &parser, &fin, &fmi);
     engine.rootContext()->setContextProperty("chart", &chart);
     //qmlRegisterType<Chart>("Chart", 1, 0, "Chart");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
@@ -28,7 +33,13 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    Controller controller(nullptr, &chart);
+    //Fingridhandler fin;
+
+    QObject::connect(&fin, &Fingridhandler::sendData,
+                     &chart, &Chart::receiveData);
+
+
+
 
     return app.exec();
 }
