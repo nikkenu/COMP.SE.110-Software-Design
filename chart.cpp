@@ -54,7 +54,7 @@ void Chart::getFMIData(const QString &title, const QString &start, const QString
               title == fmi_->getFromFMIids(FMIhandler::FMIids::Max_temperature)) {
         fmi_->getTemperatureDetails(start, end, place, title);
     } else {
-        fmi_->getTemperatureDetails(start, end, place, title);
+        fmi_->getPredictedPhenomenon(start, end, place, title);
     }
 }
 

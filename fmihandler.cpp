@@ -32,10 +32,10 @@ void FMIhandler::getObservedPhenomenon(QString start_time, QString end_time, QSt
 
 void FMIhandler::getPredictedPhenomenon(QString start_time, QString end_time, QString place, QString parameter)
 {
-    QNetworkRequest rq(QUrl(BASEURL + "starttime=" + start_time + "&endtime=" +
-                            end_time + "&storedquery_id=fmi::forecast::hirlam::surface::point::simple&place=" +
-                            place + "&timestep=" + QString::number(TIMESTEP) + "&parameters=" + parameter));
-    //qInfo() << rq.url();
+    QNetworkRequest rq(QUrl(BASEURL + "storedquery_id=fmi::forecast::hirlam::surface::point::simple&&place=" +
+                            place + "&timestep=" + QString::number(TIMESTEP) + "&starttime=" + start_time + "&endtime=" +
+                            end_time  + "&parameters=" + parameter));
+    qInfo() << rq.url();
     get(rq);
     ID = parameter;
 }
@@ -45,7 +45,7 @@ void FMIhandler::getTemperatureDetails(QString start_time, QString end_time, QSt
     QNetworkRequest rq(QUrl(BASEURL + "starttime=" + start_time + "&endtime=" +
                             end_time + "&storedquery_id=fmi::observations::weather::hourly::simple&place=" +
                             place + "&timestep=" + QString::number(TIMESTEP) + "&parameters=" + parameter));
-    //qInfo() << rq.url();
+    qInfo() << rq.url();
     get(rq);
     ID = parameter;
 }
