@@ -5,6 +5,20 @@ FMIhandler::FMIhandler()
 
 }
 
+QString FMIhandler::getFromFMIids(FMIhandler::FMIids id)
+{
+    switch(id) {
+        case FMIids::Current_temperature: return "t2m";
+        case FMIids::Observed_wind: return "ws_10min";
+        case FMIids::Observed_cloudiness: return "n_man";
+        case FMIids::Average_temperature: return "TA_PT1H_AVG";
+        case FMIids::Min_temperature: return "TA_PT1H_MIN";
+        case FMIids::Max_temperature: return "TA_PT1H_MAX";
+        case FMIids::Predicted_wind: return "windspeedms";
+        case FMIids::Predicted_temperature: return "temperature";
+    }
+}
+
 void FMIhandler::getObservedPhenomenon(QString start_time, QString end_time, QString place, QString parameter)
 {
     qDebug() << QDateTime::currentDateTimeUtc().toString(Qt::ISODate);

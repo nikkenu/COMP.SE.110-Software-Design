@@ -39,34 +39,53 @@ void Chart::setLineSeries(QLineSeries *lineSeries, QString ID)
     qDebug() << "cnt at the end: " << cnt;
 }
 
-void Chart::getData( const QString &title, const QString &start, const QString &end)
+void Chart::getFMIData(const QString &title, const QString &start, const QString &end)
 {
-    qDebug() << "getData";
-    //emit apiRequest(title);
 
-    if (title == "124")
-    {
-        fin_->getFromFingrid(124, start, end);
-    }
-    else if (title == "74")
-    {
-        fin_->getFromFingrid(74, start, end);
-    }
-    else if (title == "188")
-    {
-        fin_->getFromFingrid(188, start, end);
-    }
-    else if (title == "191")
-    {
-        fin_->getFromFingrid(191, start, end);
-    }
-    else if (title == "245")
-    {
-        fin_->getFromFingrid(245, start, end);
+    // REMOVE THIS LATER...
+    QString place = "Pirkkala";
+
+    if(title == fmi_->getFromFMIids(FMIhandler::FMIids::Current_temperature) ||
+            title == fmi_->getFromFMIids(FMIhandler::FMIids::Observed_wind) ||
+            title == fmi_->getFromFMIids(FMIhandler::FMIids::Observed_cloudiness)) {
+        fmi_->getObservedPhenomenon(start, end, place, title);
+    } else if(title == fmi_->getFromFMIids(FMIhandler::FMIids::Average_temperature) ||
+              title == fmi_->getFromFMIids(FMIhandler::FMIids::Min_temperature) ||
+              title == fmi_->getFromFMIids(FMIhandler::FMIids::Max_temperature)) {
+        fmi_->getTemperatureDetails(start, end, place, title);
+    } else {
+        fmi_->getTemperatureDetails(start, end, place, title);
     }
 }
 
-void Chart::receiveData( QByteArray data_from_api, QString ID)
+void Chart::getFingridData( const QString &title, const QString &start, const QString &end)
+{
+    qDebug() << "getData";
+    //emit apiRequest(title);
+    fin_->getFromFingrid(title.toInt(), start, end);
+//    if (title == "124")
+//    {
+//        fin_->getFromFingrid(124, start, end);
+//    }
+//    else if (title == "74")
+//    {
+//        fin_->getFromFingrid(74, start, end);
+//    }
+//    else if (title == "188")
+//    {
+//        fin_->getFromFingrid(188, start, end);
+//    }
+//    else if (title == "191")
+//    {
+//        fin_->getFromFingrid(191, start, end);
+//    }
+//    else if (title == "245")
+//    {
+//        fin_->getFromFingrid(245, start, end);
+//    }
+}
+
+void Chart::receiveFingridData( QByteArray data_from_api, QString ID)
 {
     auto parsedData = parser_->parseFingridData(data_from_api);
     qDebug() << "heres johnny with the ID: " << ID;
@@ -82,4 +101,11 @@ void Chart::receiveData( QByteArray data_from_api, QString ID)
 
     emit timeSeriesReady(ID);
 
+}
+
+void Chart::receiveFMIData(QByteArray data_from_api, QString ID)
+{
+    auto parsedData = parser_->parseFMIData(data_from_api);
+    timeSeriesData.insert({ID, parsedData});
+    emit timeSeriesReady(ID);
 }

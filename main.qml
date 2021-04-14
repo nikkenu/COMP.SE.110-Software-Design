@@ -82,7 +82,7 @@ Window {
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.getData("124", dateFromTextField.text, dateToTextField.text);
+                            chart.getFingridData("124", dateFromTextField.text, dateToTextField.text);
                         } else {
                             chartView.removeSeries(chartView.series("124"));
                         }
@@ -94,7 +94,7 @@ Window {
                     text: qsTr("Electricity production")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.getData("74", dateFromTextField.text, dateToTextField.text);
+                            chart.getFingridData("74", dateFromTextField.text, dateToTextField.text);
                         } else {
                             // Remove lineseries
                             chartView.removeSeries(chartView.series("74"))
@@ -107,7 +107,7 @@ Window {
                     text: qsTr("nuclear production")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.getData("188", dateFromTextField.text, dateToTextField.text);
+                            chart.getFingridData("188", dateFromTextField.text, dateToTextField.text);
                         } else {
                             // Remove lineseries
                             chartView.removeSeries(chartView.series("188"))
@@ -120,7 +120,7 @@ Window {
                     text: qsTr("hydro production")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.getData("191", dateFromTextField.text, dateToTextField.text);
+                            chart.getFingridData("191", dateFromTextField.text, dateToTextField.text);
                         } else {
                             // Remove lineseries
                             chartView.removeSeries(chartView.series("191"))
@@ -134,7 +134,7 @@ Window {
                     text: qsTr("wind production")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.getData("245", dateFromTextField.text, dateToTextField.text);
+                            chart.getFingridData("245", dateFromTextField.text, dateToTextField.text);
                         } else {
                             // Remove lineseries
                             chartView.removeSeries(chartView.series("245"))

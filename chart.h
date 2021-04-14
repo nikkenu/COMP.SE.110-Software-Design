@@ -40,11 +40,13 @@ public:
 
 
     // tells the api handler to get data
-    Q_INVOKABLE void getData( const QString &title, const QString &start, const QString &end);
+    Q_INVOKABLE void getFingridData( const QString &title, const QString &start, const QString &end);
+    Q_INVOKABLE void getFMIData( const QString &title, const QString &start, const QString &end);
 
 
 public slots:
-    void receiveData(QByteArray data_from_api, QString ID);
+    void receiveFingridData(QByteArray data_from_api, QString ID);
+    void receiveFMIData(QByteArray data_from_api, QString ID);
 
 signals:
     void apiRequest(QString title);

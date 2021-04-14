@@ -36,7 +36,9 @@ int main(int argc, char *argv[])
     //Fingridhandler fin;
 
     QObject::connect(&fin, &Fingridhandler::sendData,
-                     &chart, &Chart::receiveData);
+                     &chart, &Chart::receiveFingridData);
+    QObject::connect(&fmi, &FMIhandler::sendData,
+                     &chart, &Chart::receiveFMIData);
 
 
 
