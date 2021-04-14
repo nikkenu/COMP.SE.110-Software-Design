@@ -5,10 +5,10 @@ Controller::Controller(QObject *parent,
     QObject(parent),
     chart_(chart)
 {
-    DataHandler &dataHandler = DataHandler::getInstance();
+//    DataHandler &dataHandler = DataHandler::getInstance();
 
-    connect(&dataHandler, &DataHandler::sendDataToChart,
-            chart_, &Chart::receiveData);
+//    connect(&dataHandler, &DataHandler::sendDataToChart,
+//            chart_, &Chart::receiveData);
 
     /*connect(chart_, &Chart::getData,
             &dataHandler, &DataHandler::dataSignal);*/

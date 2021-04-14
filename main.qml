@@ -17,7 +17,7 @@ Window {
         target: chart
         onTimeSeriesReady: function(x){
             var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, dateTimeXaxis, electricityValueYaxis);
-            chart.setLineSeries(tmp);
+            chart.setLineSeries(tmp, x);
         }
 
     }
@@ -82,9 +82,9 @@ Window {
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.getData("124");
+                            chart.getData("124", dateFromTextField.text, dateToTextField.text);
                         } else {
-                            chartView.removeSeries(chartView.series("Electricity consumption in Finland"));
+                            chartView.removeSeries(chartView.series("124"));
                         }
                     }
                 }
@@ -94,9 +94,10 @@ Window {
                     text: qsTr("Electricity production")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            // Make API request
+                            chart.getData("74", dateFromTextField.text, dateToTextField.text);
                         } else {
                             // Remove lineseries
+                            chartView.removeSeries(chartView.series("74"))
                         }
                     }
                 }
@@ -120,12 +121,14 @@ Window {
 
                     Text {
                         id: text5
+
                         text: qsTr("From")
                         font.pixelSize: 12
                     }
 
                     TextField {
                         id: dateFromTextField
+
                         text: "2021-03-15T13:11:51Z"
                         placeholderText: qsTr("Text Field")
                     }

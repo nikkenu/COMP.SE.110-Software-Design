@@ -2,7 +2,7 @@
 #define FINGRIDHANDLER_H
 
 #include "baseapihandler.h"
-#include "datahandler.h"
+//#include "datahandler.h"
 
 class Fingridhandler: public BaseAPIhandler
 {

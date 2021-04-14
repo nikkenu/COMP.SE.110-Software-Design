@@ -2,9 +2,7 @@
 
 FMIhandler::FMIhandler()
 {
-    DataHandler &dataHandler = DataHandler::getInstance();
-    QObject::connect(this, &FMIhandler::sendData, &dataHandler,
-                       &DataHandler::receiveFMIData);
+
 }
 
 void FMIhandler::getObservedPhenomenon(QString start_time, QString end_time, QString place, QString parameter)

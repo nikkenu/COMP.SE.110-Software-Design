@@ -17,7 +17,8 @@ SOURCES += \
         datahandler.cpp \
         fingridhandler.cpp \
         fmihandler.cpp \
-        main.cpp
+        main.cpp \
+        xmlparser.cpp
 
 RESOURCES += qml.qrc
 
@@ -38,4 +39,5 @@ HEADERS += \
     controller.h \
     datahandler.h \
     fingridhandler.h \
-    fmihandler.h
+    fmihandler.h \
+    xmlparser.h
