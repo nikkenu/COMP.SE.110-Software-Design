@@ -12,11 +12,16 @@ Window {
     height: 720
     visible: true
     property alias rowLayoutWidth: rowLayout.width
+    property var register: {"t2m" : "Current temperature", "ws_10min": "Observed wind", "n_man":"Observed cloudiness",
+    "TA_PT1H_MIN":"Minimum temperature", "TA_PT1H_AVG":"Average temperature", "TA_PT1H_MAX":"Maximum temperature",
+    "windspeedms":"Predicted wind", "temperature":"Predicted temperature", 124 : "Electricity consumption",
+    165 : "Electricity consumption forecast", 74 : "Electricity production", 242 : "Tentative production prediction",
+    188 : "Nuclear power production", 191 : "Hydro power production", 245 : "Wind power production"}
 
     Connections {
         target: chart
         onTimeSeriesReady: function(x){
-            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, x, dateTimeXaxis, electricityValueYaxis);
+            var tmp = chartView.createSeries(ChartView.SeriesTypeLine, register[x], dateTimeXaxis, electricityValueYaxis);
             chart.setLineSeries(tmp, x);
         }
 
