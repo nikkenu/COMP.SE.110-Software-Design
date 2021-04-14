@@ -101,6 +101,47 @@ Window {
                         }
                     }
                 }
+
+                CheckBox {
+                    id: nuclearPower
+                    text: qsTr("nuclear production")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            chart.getData("188", dateFromTextField.text, dateToTextField.text);
+                        } else {
+                            // Remove lineseries
+                            chartView.removeSeries(chartView.series("188"))
+                        }
+                    }
+                }
+
+                CheckBox {
+                    id: hydropower
+                    text: qsTr("hydro production")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            chart.getData("191", dateFromTextField.text, dateToTextField.text);
+                        } else {
+                            // Remove lineseries
+                            chartView.removeSeries(chartView.series("191"))
+                        }
+                    }
+                }
+
+
+                CheckBox {
+                    id: windpower
+                    text: qsTr("wind production")
+                    onCheckedStateChanged: function() {
+                        if(checkedState) {
+                            chart.getData("245", dateFromTextField.text, dateToTextField.text);
+                        } else {
+                            // Remove lineseries
+                            chartView.removeSeries(chartView.series("245"))
+                        }
+                    }
+                }
+
             }
 
             Column {

@@ -50,8 +50,19 @@ void Chart::getData( const QString &title, const QString &start, const QString &
     }
     else if (title == "74")
     {
-        qDebug() << "ebin";
         fin_->getFromFingrid(74, start, end);
+    }
+    else if (title == "188")
+    {
+        fin_->getFromFingrid(188, start, end);
+    }
+    else if (title == "191")
+    {
+        fin_->getFromFingrid(191, start, end);
+    }
+    else if (title == "245")
+    {
+        fin_->getFromFingrid(245, start, end);
     }
 }
 
