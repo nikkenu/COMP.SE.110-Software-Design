@@ -18,11 +18,13 @@ signals:
 public slots:
     void get(QNetworkRequest request);
 
+
 private slots:
     void readyRead();
     void finished(QNetworkReply *reply);
     void sslErrors(QNetworkReply *reply, const QList<QSslError> &errors);
     void error();
+    void requestCompleted(QNetworkReply* reply);
 
 protected:
     QString m_baseUrl;
