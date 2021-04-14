@@ -99,13 +99,14 @@ void Chart::receiveFingridData( QByteArray data_from_api, QString ID)
 //    else
 //        signal = "Electricity production";
 
-    emit timeSeriesReady(ID);
+    emit fingridSeriesReady(ID);
 
 }
 
 void Chart::receiveFMIData(QByteArray data_from_api, QString ID)
 {
+    qDebug() << "HERERE: " << ID;
     auto parsedData = parser_->parseFMIData(data_from_api);
     timeSeriesData.insert({ID, parsedData});
-    emit timeSeriesReady(ID);
+    emit fmiSeriesReady(ID);
 }

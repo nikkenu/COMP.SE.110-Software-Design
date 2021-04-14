@@ -51,7 +51,8 @@ public slots:
 signals:
     void apiRequest(QString title);
 
-    void timeSeriesReady(QString title);
+    void fingridSeriesReady(QString title);
+    void fmiSeriesReady(QString title);
 
     //void timeSeriesSignal();
     //void getData();

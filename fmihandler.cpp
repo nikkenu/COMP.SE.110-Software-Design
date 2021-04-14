@@ -22,12 +22,12 @@ QString FMIhandler::getFromFMIids(FMIhandler::FMIids id)
 void FMIhandler::getObservedPhenomenon(QString start_time, QString end_time, QString place, QString parameter)
 {
     qDebug() << QDateTime::currentDateTimeUtc().toString(Qt::ISODate);
-
     QNetworkRequest rq(QUrl(BASEURL + "starttime=" + start_time + "&endtime=" +
                             end_time + "&storedquery_id=fmi::observations::weather::simple&place=" +
                             place + "&timestep=" + QString::number(TIMESTEP) + "&parameters=" + parameter));
     //qInfo() << rq.url();
     get(rq);
+    ID = parameter;
 }
 
 void FMIhandler::getPredictedPhenomenon(QString start_time, QString end_time, QString place, QString parameter)
@@ -37,6 +37,7 @@ void FMIhandler::getPredictedPhenomenon(QString start_time, QString end_time, QS
                             place + "&timestep=" + QString::number(TIMESTEP) + "&parameters=" + parameter));
     //qInfo() << rq.url();
     get(rq);
+    ID = parameter;
 }
 
 void FMIhandler::getTemperatureDetails(QString start_time, QString end_time, QString place, QString parameter)
@@ -46,4 +47,5 @@ void FMIhandler::getTemperatureDetails(QString start_time, QString end_time, QSt
                             place + "&timestep=" + QString::number(TIMESTEP) + "&parameters=" + parameter));
     //qInfo() << rq.url();
     get(rq);
+    ID = parameter;
 }
