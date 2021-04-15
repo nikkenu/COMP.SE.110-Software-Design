@@ -15,9 +15,30 @@ Chart::~Chart()
 
 }
 
+double Chart::yMax() const
+{
+    return maxY;
+}
+
+double Chart::yMin() const
+{
+    return minY;
+}
+
+void Chart::setYMin(double val)
+{
+    minY=val;
+}
+
+void Chart::setYMax(double val)
+{
+    maxY=val;
+}
+
 void Chart::setLineSeries(QLineSeries *lineSeries, QString ID)
 {
 
+    bool axisChange{false};
     auto it = timeSeriesData.find(ID);
     if (it == timeSeriesData.end())
     {
@@ -31,10 +52,23 @@ void Chart::setLineSeries(QLineSeries *lineSeries, QString ID)
     {
         qreal x,y;
         y = i.value.toDouble();
+        if (y < minY) {
+            setYMin(y);
+            yMinChanged(minY);
+        }
+
+        if (y > maxY) {
+            setYMax(y);
+            yMaxChanged(maxY);
+            qDebug() << "derpderp";
+        }
+
         x = i.time.toMSecsSinceEpoch();
         lineSeries->append(x,y);
         cnt++;
     }
+
+
 
     qDebug() << "cnt at the end: " << cnt;
 }

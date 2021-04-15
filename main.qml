@@ -30,6 +30,18 @@ Window {
             chart.setLineSeries(tmp, x);
         }
 
+
+        onYMaxChanged:
+        {
+            electricityValueYaxis.max = value;
+        }
+
+        onYMinChanged:
+        {
+            electricityValueYaxis.min = value;
+        }
+
+
     }
 
     Column {

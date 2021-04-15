@@ -32,12 +32,24 @@ public:
                    FMIhandler *fmiHandler = nullptr);
     virtual ~Chart();
 
-    //QtCharts::QLineSeries* getTimeSeries() const;
-    //void setTimeSeries(QtCharts::QLineSeries *timeSeries);
-    //Q_INVOKABLE void showData();
+    // Properties for setting max and min values for axis (start and end date are on x-axis)´
+
+    Q_PROPERTY(double yMax READ yMax WRITE setYMax NOTIFY yMaxChanged);
+    Q_PROPERTY(double yMin READ yMin WRITE setYMin NOTIFY yMinChanged)
+
+    double yMax() const;
+    double yMin() const;
+
+    void setYMax(double val);
+    void setYMin(double val);
+
+
+
+
+
+
 
     Q_INVOKABLE void setLineSeries(QLineSeries *lineSeries, QString ID);
-
 
     // tells the api handler to get data
     Q_INVOKABLE void getFingridData( const QString &title, const QString &start, const QString &end);
@@ -54,17 +66,18 @@ signals:
     void fingridSeriesReady(QString title);
     void fmiSeriesReady(QString title);
 
-    //void timeSeriesSignal();
-    //void getData();
 
-    //void makeRequest();
-
+    void yMaxChanged(double value);
+    void yMinChanged(double value);
 
 private:
    // QtCharts::QLineSeries* timeSeries_;
    //std::vector<DataHandler::time_series_element> timeSeriesData = {};
 
    std::unordered_map<QString, std::vector<time_series_element>> timeSeriesData = {};
+
+   double maxY{0}; // some large value for starters....
+   double minY{10000000};
 
    xmlParser *parser_;
    Fingridhandler *fin_;
