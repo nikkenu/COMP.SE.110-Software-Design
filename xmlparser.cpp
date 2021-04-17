@@ -7,9 +7,9 @@ xmlParser::xmlParser(QObject *parent) : QObject(parent)
 
 }
 
-std::vector<time_series_element> xmlParser::parseFingridData(const QByteArray &data)
+QVector<time_series_element> xmlParser::parseFingridData(const QByteArray &data)
 {
-    std::vector<time_series_element> values = {};
+    QVector<time_series_element> values = {};
     QDomDocument doc;
     doc.setContent(data);
 
@@ -24,7 +24,7 @@ std::vector<time_series_element> xmlParser::parseFingridData(const QByteArray &d
             while (!child.isNull()) {
                 if (child.tagName() == "value") tmp.value = child.text();
                 if (child.tagName() == "start_time") {
-                    qDebug() << "child name: " << child.text();
+//                    qDebug() << "child name: " << child.text();
                     auto time = QDateTime::fromString(child.text(), Qt::ISODate);
 
                     tmp.time = QDateTime::fromString(child.text(), Qt::ISODate);
@@ -37,21 +37,21 @@ std::vector<time_series_element> xmlParser::parseFingridData(const QByteArray &d
     }
     // just here for now, need to refactor this out
 
-    qDebug();
-    qDebug() << "---Fingrid Data---";
-    int count=0;
-    for(const auto& i : values) {
-        qDebug() << "Time: " << i.time << ", " << "value: " << i.value;
-        count++;
-    }
-    qDebug() << "---Fingrid End---";
+//    qDebug();
+//    qDebug() << "---Fingrid Data---";
+//    int count=0;
+//    for(const auto& i : values) {
+//        qDebug() << "Time: " << i.time << ", " << "value: " << i.value;
+//        count++;
+//    }
+//    qDebug() << "---Fingrid End---";
 
     return values;
 }
 
-std::vector<time_series_element> xmlParser::parseFMIData(const QByteArray &data)
+QVector<time_series_element> xmlParser::parseFMIData(const QByteArray &data)
 {
-    std::vector<time_series_element> values = {};
+    QVector<time_series_element> values = {};
 
     QDomDocument doc;
     doc.setContent(data);
@@ -80,12 +80,12 @@ std::vector<time_series_element> xmlParser::parseFMIData(const QByteArray &data)
        wfsMember = wfsMember.nextSibling();
     }
 
-    qDebug();
-    qDebug() << "---FMI Data---";
-    for(const auto& i : values) {
-        qDebug() << "Time: " << i.time << ", " << "value: " << i.value;
-    }
-    qDebug() << "---FMI End---";
+//    qDebug();
+//    qDebug() << "---FMI Data---";
+//    for(const auto& i : values) {
+//        qDebug() << "Time: " << i.time << ", " << "value: " << i.value;
+//    }
+//    qDebug() << "---FMI End---";
 
     return values;
 }

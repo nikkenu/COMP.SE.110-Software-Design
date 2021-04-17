@@ -13,6 +13,7 @@
 #include "fmihandler.h"
 
 #include <unordered_map>
+#include <unordered_set>
 
 struct MinMax
 {
@@ -43,6 +44,9 @@ public:
     Q_INVOKABLE void getFingridData( const QString &title, const QString &start, const QString &end);
     Q_INVOKABLE void getFMIData( const QString &title, const QString &start, const QString &end);
 
+    Q_INVOKABLE void realTime();
+    Q_INVOKABLE void realTimeStatus(QString id);
+
 
 public slots:
     void receiveFingridData(QByteArray data_from_api, QString ID);
@@ -64,11 +68,13 @@ private:
    // QtCharts::QLineSeries* timeSeries_;
    //std::vector<DataHandler::time_series_element> timeSeriesData = {};
 
-   std::unordered_map<QString, std::vector<time_series_element>> timeSeriesData = {};
+   QMap<QString, QVector<time_series_element>> timeSeriesData = {};
 
    xmlParser *parser_;
    Fingridhandler *fin_;
    FMIhandler *fmi_;
+
+   std::unordered_set<QString> realTimeSet_{};
 
 
 };
