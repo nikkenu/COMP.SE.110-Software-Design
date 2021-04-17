@@ -114,6 +114,15 @@ void Chart::receiveFMIData(QByteArray data_from_api, QString ID)
 {
     qDebug() << "HERERE: " << ID;
     auto parsedData = parser_->parseFMIData(data_from_api);
-    timeSeriesData.insert({ID, parsedData});
+
+    if (timeSeriesData.find(ID) == timeSeriesData.end())
+    {
+        timeSeriesData.insert({ID, parsedData});
+    }
+    else
+    {
+        timeSeriesData.at(ID) = parsedData;
+    }
+
     emit fmiSeriesReady(ID);
 }
