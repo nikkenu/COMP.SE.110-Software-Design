@@ -91,7 +91,14 @@ void Chart::receiveFingridData( QByteArray data_from_api, QString ID)
     qDebug() << "heres johnny with the ID: " << ID;
     //this->timeSeriesData = parsedData;
 
-    timeSeriesData.insert({ID, parsedData});
+    if (timeSeriesData.find(ID) == timeSeriesData.end())
+    {
+        timeSeriesData.insert({ID, parsedData});
+    }
+    else
+    {
+        timeSeriesData.at(ID) = parsedData;
+    }
 
     QString signal{};
 //    if (ID == "124")
