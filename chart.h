@@ -43,6 +43,8 @@ public:
     Q_INVOKABLE void getFingridData( const QString &title, const QString &start, const QString &end);
     Q_INVOKABLE void getFMIData( const QString &title, const QString &start, const QString &end);
 
+    Q_INVOKABLE QString calcPercentage(QString ID);
+
 
 public slots:
     void receiveFingridData(QByteArray data_from_api, QString ID);
