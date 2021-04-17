@@ -25,9 +25,9 @@ void Chart::setLineSeries(QLineSeries *lineSeries, QString ID)
         // no such data
         return;
     }
-    auto data = it->second;
+
     int cnt{0};
-    for(const auto& i : data)
+    for(const auto& i : timeSeriesData[ID])
     {
         qreal x,y;
         y = i.value.toDouble();
@@ -93,14 +93,14 @@ void Chart::receiveFingridData( QByteArray data_from_api, QString ID)
 
     if (timeSeriesData.find(ID) == timeSeriesData.end())
     {
-        timeSeriesData.insert({ID, parsedData});
+        timeSeriesData.insert(ID, parsedData);
     }
     else
     {
-        timeSeriesData.at(ID) = parsedData;
+        timeSeriesData[ID] = parsedData;
     }
 
-    QString signal{};
+    //QString signal{};
 //    if (ID == "124")
 //        signal = "Electricity consumption in Finland";
 //    else
@@ -117,12 +117,25 @@ void Chart::receiveFMIData(QByteArray data_from_api, QString ID)
 
     if (timeSeriesData.find(ID) == timeSeriesData.end())
     {
-        timeSeriesData.insert({ID, parsedData});
+        timeSeriesData.insert(ID, parsedData);
     }
     else
     {
-        timeSeriesData.at(ID) = parsedData;
+        timeSeriesData[ID] = parsedData;
     }
 
     emit fmiSeriesReady(ID);
+}
+
+
+void Chart::realTime()
+{
+
+}
+
+void Chart::realTimeStatus(QString ID)
+{
+    //realTimeSet_
+
+    realTimeSet_.insert(ID);
 }

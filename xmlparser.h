@@ -15,8 +15,8 @@ class xmlParser : public QObject
 public:
     explicit xmlParser(QObject *parent = nullptr);
 
-    std::vector<time_series_element> parseFingridData(const QByteArray &data);
-    std::vector<time_series_element> parseFMIData(const QByteArray &data);
+    QVector<time_series_element> parseFingridData(const QByteArray &data);
+    QVector<time_series_element> parseFMIData(const QByteArray &data);
 
 signals:
 
