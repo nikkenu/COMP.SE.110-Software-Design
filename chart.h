@@ -39,13 +39,14 @@ public:
 
     Q_INVOKABLE void setLineSeries(QLineSeries *lineSeries, QString ID);
 
-
     // tells the api handler to get data
     Q_INVOKABLE void getFingridData( const QString &title, const QString &start, const QString &end);
     Q_INVOKABLE void getFMIData( const QString &title, const QString &start, const QString &end);
 
     Q_INVOKABLE void realTime();
     Q_INVOKABLE void realTimeStatus(QString id);
+
+    Q_INVOKABLE void changeLocation(QString location);
 
 
 public slots:
@@ -76,6 +77,7 @@ private:
 
    std::unordered_set<QString> realTimeSet_{};
 
+   QString currentLocation_{"Pirkkala"};
 
 };
 

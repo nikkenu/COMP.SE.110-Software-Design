@@ -284,6 +284,14 @@ Window {
                         }
                     }
                 }
+
+
+                ComboBox {
+                    id: weatherLocation
+                    model: ["Pirkkala", "Helsinki", "Oulu"]
+
+                    onActivated: chart.changeLocation(currentText)
+                }
             }
 
             Column {

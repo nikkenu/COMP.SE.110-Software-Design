@@ -43,18 +43,18 @@ void Chart::getFMIData(const QString &title, const QString &start, const QString
 {
 
     // REMOVE THIS LATER...
-    QString place = "Pirkkala";
+//    QString place = "Pirkkala";
 
     if(title == fmi_->getFromFMIids(FMIhandler::FMIids::Current_temperature) ||
             title == fmi_->getFromFMIids(FMIhandler::FMIids::Observed_wind) ||
             title == fmi_->getFromFMIids(FMIhandler::FMIids::Observed_cloudiness)) {
-        fmi_->getObservedPhenomenon(start, end, place, title);
+        fmi_->getObservedPhenomenon(start, end, currentLocation_, title);
     } else if(title == fmi_->getFromFMIids(FMIhandler::FMIids::Average_temperature) ||
               title == fmi_->getFromFMIids(FMIhandler::FMIids::Min_temperature) ||
               title == fmi_->getFromFMIids(FMIhandler::FMIids::Max_temperature)) {
-        fmi_->getTemperatureDetails(start, end, place, title);
+        fmi_->getTemperatureDetails(start, end, currentLocation_, title);
     } else {
-        fmi_->getPredictedPhenomenon(start, end, place, title);
+        fmi_->getPredictedPhenomenon(start, end, currentLocation_, title);
     }
 }
 
@@ -138,4 +138,10 @@ void Chart::realTimeStatus(QString ID)
     //realTimeSet_
 
     realTimeSet_.insert(ID);
+}
+
+void Chart::changeLocation(QString location)
+{
+    currentLocation_=location;
+    qDebug() << currentLocation_;
 }
