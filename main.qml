@@ -12,7 +12,8 @@ Window {
     width: 1000
     height: 720
     visible: true
-    property variant win;
+    property var graphId: 1
+    property var win;
     property alias rowLayoutWidth: rowLayout.width
     property var register: {"t2m" : "Current temperature", "ws_10min": "Observed wind", "n_man":"Observed cloudiness",
     "TA_PT1H_MIN":"Minimum temperature", "TA_PT1H_AVG":"Average temperature", "TA_PT1H_MAX":"Maximum temperature",
@@ -396,6 +397,7 @@ Window {
             Column {
                 id: column4
                 width: 200
+                spacing: 5
 
                 Button {
                     id: saveButton
@@ -407,6 +409,21 @@ Window {
                     id: openButton
                     text: "Open chart"
                     onClicked: openChart()
+                }
+
+                Text {
+                    id: saveStatus
+                    text: qsTr("")
+                }
+
+                Timer {
+                    id: saveStatusTimer
+                    interval: 3000
+                    running: false
+                    onTriggered: {
+                        saveStatus.text = "";
+                        running = false;
+                    }
                 }
             }
 
@@ -513,6 +530,8 @@ Window {
         chartView.grabToImage(function(img) {
             img.saveToFile(appPath + "/saved_chart.png");
         });
+        saveStatus.text = "Saved chart";
+        saveStatusTimer.start();
     }
 
     function openChart() {
