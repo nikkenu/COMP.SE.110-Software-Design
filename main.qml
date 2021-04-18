@@ -4,6 +4,7 @@ import QtCharts 2.3
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
+import QtQuick.Dialogs 1.0
 //import Chart 1.0
 
 Window {
@@ -11,6 +12,7 @@ Window {
     width: 1000
     height: 720
     visible: true
+    property variant win;
     property alias rowLayoutWidth: rowLayout.width
     property var register: {"t2m" : "Current temperature", "ws_10min": "Observed wind", "n_man":"Observed cloudiness",
     "TA_PT1H_MIN":"Minimum temperature", "TA_PT1H_AVG":"Average temperature", "TA_PT1H_MAX":"Maximum temperature",
@@ -391,9 +393,39 @@ Window {
 
 
             }
+            Column {
+                id: column4
+                width: 200
+
+                Button {
+                    id: saveButton
+                    text: "Save chart"
+                    onClicked: saveChart()
+                }
+
+                Button {
+                    id: openButton
+                    text: "Open chart"
+                    onClicked: openChart()
+                }
+            }
 
 
         }
+
+    }
+
+    function saveChart() {
+        console.log(appPath);
+        chartView.grabToImage(function(img) {
+            img.saveToFile(appPath + "/saved_chart.png");
+        });
+    }
+
+    function openChart() {
+        var component = Qt.createComponent("savedChart.qml");
+        win = component.createObject(window);
+        win.show();
 
     }
 

@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 
     Chart chart(nullptr, &parser, &fin, &fmi);
     engine.rootContext()->setContextProperty("chart", &chart);
+    engine.rootContext()->setContextProperty("appPath", QCoreApplication::applicationDirPath());
     //qmlRegisterType<Chart>("Chart", 1, 0, "Chart");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
