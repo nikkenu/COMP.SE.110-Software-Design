@@ -366,9 +366,6 @@ Window {
         }
 
     }
-    Window {
-        id: savedChartWindow
-    }
 
     Button {
         id: saveButton
