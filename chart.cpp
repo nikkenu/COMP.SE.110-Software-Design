@@ -145,3 +145,55 @@ void Chart::changeLocation(QString location)
     currentLocation_=location;
     qDebug() << currentLocation_;
 }
+
+QString Chart::calcPercentage(QString ID)
+{
+    QString nuclearPercentage = "empty";
+        double tmp = 0;
+
+        if (timeSeriesData.find("74") != timeSeriesData.end())
+        {
+            if (timeSeriesData.find(ID) != timeSeriesData.end())
+            {
+                double totalProduced = 0;
+                QVector<time_series_element> elementsProduced = timeSeriesData.value("74");
+                for(auto i : elementsProduced)
+                {
+                    QString tmp2 = i.value;
+                    double tmp3 = tmp2.toDouble();
+                    totalProduced = totalProduced + tmp3;
+                }
+
+                double totalPowerForm = 0;
+                QVector<time_series_element> elementsPowerForm = timeSeriesData.value(ID);
+                for(auto i : elementsPowerForm)
+                {
+                    QString tmp2 = i.value;
+                    double tmp3 = tmp2.toDouble();
+                    totalPowerForm = totalPowerForm + tmp3;
+                }
+
+                if(ID == "188" || ID == "191")
+                {
+                    totalPowerForm = totalPowerForm/20;
+                }
+
+                tmp = totalPowerForm / totalProduced * 100;
+                nuclearPercentage = QString::number(tmp);
+
+            }
+            else
+            {
+                qDebug() << "No data for power form.";
+            }
+        }
+        else
+        {
+            qDebug() << "No data for power produced.";
+        }
+
+        qDebug() << "percentage: " << nuclearPercentage;
+
+        return nuclearPercentage;
+
+}

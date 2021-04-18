@@ -35,6 +35,8 @@ public:
 
     Q_INVOKABLE void changeLocation(QString location);
 
+    Q_INVOKABLE QString calcPercentage(QString ID);
+
 
 public slots:
     void receiveFingridData(QByteArray data_from_api, QString ID);
