@@ -324,6 +324,17 @@ Window {
                         placeholderText: qsTr("Text Field")
                     }
 
+                    Button {
+                        id: nowCheckBox
+                        text: qsTr("Now")
+                        checked: true
+                        onClicked: function()
+                        {
+                            var date = new Date()
+                            dateFromTextField.text = date
+                        }
+                    }
+
                 }
 
                 RowLayout {
@@ -341,19 +352,16 @@ Window {
                         height: 20
                         text: "2021-03-18T13:11:51Z"
                         placeholderText: qsTr("Text Field")
-                        enabled: false;
                     }
 
-                    CheckBox {
-                        id: nowCheckBox
+                    Button {
+                        id: nowCheckBox2
                         text: qsTr("Now")
                         checked: true
-                        onCheckedStateChanged: function() {
-                            if(checkedState) {
-                                dateToTextField.enabled = false;
-                            } else {
-                                dateToTextField.enabled = true;
-                            }
+                        onClicked: function()
+                        {
+                            var date = new Date()
+                            dateToTextField.text = date
                         }
                     }
                 }
