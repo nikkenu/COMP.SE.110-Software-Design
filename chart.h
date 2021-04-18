@@ -30,9 +30,6 @@ public:
     Q_INVOKABLE void getFingridData( const QString &title, const QString &start, const QString &end);
     Q_INVOKABLE void getFMIData( const QString &title, const QString &start, const QString &end);
 
-    Q_INVOKABLE void realTime();
-    Q_INVOKABLE void realTimeStatus(QString id);
-
     Q_INVOKABLE void changeLocation(QString location);
 
     Q_INVOKABLE QString calcPercentage(QString ID);
@@ -45,8 +42,6 @@ public slots:
     void receiveFMIData(QByteArray data_from_api, QString ID);
 
 signals:
-    void apiRequest(QString title);
-
     void fingridSeriesReady(QString title);
     void fmiSeriesReady(QString title);
 
@@ -58,7 +53,6 @@ private:
    Fingridhandler *fin_;
    FMIhandler *fmi_;
 
-   std::unordered_set<QString> realTimeSet_{};
 
    QString currentLocation_{"Pirkkala"};
 

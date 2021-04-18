@@ -381,18 +381,6 @@ Window {
                     }
                 }
 
-
-                CheckBox {
-                    id: realTime
-                    text: qsTr("Realtime")
-
-                    onClicked:
-                    {
-                        chart.realTime()
-                    }
-                }
-
-
             }
             Column {
                 id: column4
