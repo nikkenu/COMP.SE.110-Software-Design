@@ -361,29 +361,26 @@ Window {
                     }
                 }
             }
+            Column {
+                id: column4
+                width: 200
+
+                Button {
+                    id: saveButton
+                    text: "Save chart"
+                    onClicked: saveChart()
+                }
+
+                Button {
+                    id: openButton
+                    text: "Open chart"
+                    onClicked: openChart()
+                }
+            }
 
 
         }
 
-    }
-
-    Button {
-        id: saveButton
-        x: 593
-        y: 415
-        width: 79
-        height: 23
-        text: "Save chart"
-        onClicked: saveChart()
-    }
-
-    Button {
-        id: openButton
-        x: 693
-        y: 415
-        height: 23
-        text: "Open saved chart"
-        onClicked: openChart()
     }
 
     function saveChart() {
