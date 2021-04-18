@@ -332,7 +332,7 @@ Window {
                         checked: true
                         onClicked: function()
                         {
-                            var date = new Date()
+                            var date = chart.currentTime()
                             dateFromTextField.text = date
                         }
                     }
@@ -362,7 +362,7 @@ Window {
                         checked: true
                         onClicked: function()
                         {
-                            var date = new Date()
+                            var date = chart.currentTime()
                             dateToTextField.text = date
                         }
                     }
@@ -409,6 +409,99 @@ Window {
                     onClicked: openChart()
                 }
             }
+
+            Column {
+                id: columnPercentages
+                width: 200
+                height: 239
+                spacing: 5
+
+
+                Text {
+                    id: text7
+                    text: qsTr("Percentage of each power form")
+                    font.pixelSize: 12
+                }
+
+                RowLayout {
+                    id: rowLayoutNuclear
+
+                    Text {
+                        id: text8
+                        width: 100
+                        text: qsTr("Nuclear")
+                        font.pixelSize: 12
+                    }
+
+                    TextField {
+                        id: nuclearPercentage
+                        width: 100
+                        height: 20
+                        text: "000"
+                        placeholderText: qsTr("Text Field")
+                        enabled: false;
+                    }
+
+                }
+
+                RowLayout {
+                    id: rowLayoutHydro
+
+                    Text {
+                        id: text9
+                        width: 100
+                        text: qsTr("Hydro")
+                        font.pixelSize: 12
+                    }
+
+                    TextField {
+                        id: hydroPercentage
+                        width: 100
+                        height: 20
+                        text: "100"
+                        placeholderText: qsTr("Text Field")
+                        enabled: false;
+                    }
+
+                }
+
+                RowLayout {
+                    id: rowLayoutWind
+
+                    Text {
+                        id: text10
+                        width: 100
+                        text: qsTr("Wind")
+                        font.pixelSize: 12
+                    }
+
+                    TextField {
+                        id: windPercentage
+                        width: 100
+                        height: 20
+                        text: "200"
+                        placeholderText: qsTr("Text Field")
+                        enabled: false;
+                    }
+
+                }
+
+
+
+
+                Button {
+                    id: calculatePercentages
+                    text: qsTr("Calculate")
+
+                    onClicked:
+                    {
+                        nuclearPercentage.text  = chart.calcPercentage("188")
+                        hydroPercentage.text = chart.calcPercentage("191")
+                        windPercentage.text = chart.calcPercentage("245")
+                    }
+                }
+            }
+
 
 
         }
