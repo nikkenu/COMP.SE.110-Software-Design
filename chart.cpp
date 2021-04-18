@@ -197,3 +197,10 @@ QString Chart::calcPercentage(QString ID)
         return nuclearPercentage;
 
 }
+
+QString Chart::currentTime()
+{
+    QDateTime date = QDateTime::currentDateTime();
+    QString dateString = date.toString("yyyy-MM-ddThh:mm:ssZ");
+    return  dateString;
+}

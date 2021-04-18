@@ -330,7 +330,7 @@ Window {
                         checked: true
                         onClicked: function()
                         {
-                            var date = new Date()
+                            var date = chart.currentTime()
                             dateFromTextField.text = date
                         }
                     }
@@ -360,7 +360,7 @@ Window {
                         checked: true
                         onClicked: function()
                         {
-                            var date = new Date()
+                            var date = chart.currentTime()
                             dateToTextField.text = date
                         }
                     }

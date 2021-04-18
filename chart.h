@@ -37,6 +37,8 @@ public:
 
     Q_INVOKABLE QString calcPercentage(QString ID);
 
+    Q_INVOKABLE QString currentTime();
+
 
 public slots:
     void receiveFingridData(QByteArray data_from_api, QString ID);
