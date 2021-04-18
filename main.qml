@@ -97,7 +97,6 @@ Window {
                     text: qsTr("Electricity consumption in Finland")
                     onCheckedStateChanged: function() {
                         if(checkedState) {
-                            chart.realTimeStatus("124");
                             chart.getFingridData("124", dateFromTextField.text, dateToTextField.text);
                         } else {
                             chartView.removeSeries(chartView.series(register["124"]));
