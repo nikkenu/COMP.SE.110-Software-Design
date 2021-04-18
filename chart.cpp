@@ -26,17 +26,13 @@ void Chart::setLineSeries(QLineSeries *lineSeries, QString ID)
         return;
     }
 
-    int cnt{0};
     for(const auto& i : timeSeriesData[ID])
     {
         qreal x,y;
         y = i.value.toDouble();
         x = i.time.toMSecsSinceEpoch();
         lineSeries->append(x,y);
-        cnt++;
     }
-
-    qDebug() << "cnt at the end: " << cnt;
 }
 
 void Chart::getFMIData(const QString &title, const QString &start, const QString &end)
@@ -60,37 +56,13 @@ void Chart::getFMIData(const QString &title, const QString &start, const QString
 
 void Chart::getFingridData( const QString &title, const QString &start, const QString &end)
 {
-    qDebug() << "getData";
-    //emit apiRequest(title);
+
     fin_->getFromFingrid(title.toInt(), start, end);
-//    if (title == "124")
-//    {
-//        fin_->getFromFingrid(124, start, end);
-//    }
-//    else if (title == "74")
-//    {
-//        fin_->getFromFingrid(74, start, end);
-//    }
-//    else if (title == "188")
-//    {
-//        fin_->getFromFingrid(188, start, end);
-//    }
-//    else if (title == "191")
-//    {
-//        fin_->getFromFingrid(191, start, end);
-//    }
-//    else if (title == "245")
-//    {
-//        fin_->getFromFingrid(245, start, end);
-//    }
 }
 
 void Chart::receiveFingridData( QByteArray data_from_api, QString ID)
 {
     auto parsedData = parser_->parseFingridData(data_from_api);
-    qDebug() << "heres johnny with the ID: " << ID;
-    //this->timeSeriesData = parsedData;
-
     if (timeSeriesData.find(ID) == timeSeriesData.end())
     {
         timeSeriesData.insert(ID, parsedData);
@@ -99,22 +71,12 @@ void Chart::receiveFingridData( QByteArray data_from_api, QString ID)
     {
         timeSeriesData[ID] = parsedData;
     }
-
-    //QString signal{};
-//    if (ID == "124")
-//        signal = "Electricity consumption in Finland";
-//    else
-//        signal = "Electricity production";
-
     emit fingridSeriesReady(ID);
-
 }
 
 void Chart::receiveFMIData(QByteArray data_from_api, QString ID)
 {
-    qDebug() << "HERERE: " << ID;
     auto parsedData = parser_->parseFMIData(data_from_api);
-
     if (timeSeriesData.find(ID) == timeSeriesData.end())
     {
         timeSeriesData.insert(ID, parsedData);
@@ -123,22 +85,10 @@ void Chart::receiveFMIData(QByteArray data_from_api, QString ID)
     {
         timeSeriesData[ID] = parsedData;
     }
-
     emit fmiSeriesReady(ID);
 }
 
 
-void Chart::realTime()
-{
-
-}
-
-void Chart::realTimeStatus(QString ID)
-{
-    //realTimeSet_
-
-    realTimeSet_.insert(ID);
-}
 
 void Chart::changeLocation(QString location)
 {

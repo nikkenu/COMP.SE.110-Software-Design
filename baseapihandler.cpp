@@ -46,6 +46,6 @@ void BaseAPIhandler::requestCompleted(QNetworkReply *reply)
 {
     QByteArray content{ reply->readAll() };
     emit sendData(content, ID);
-    ID=""; //reset id
+    ID.clear(); //reset id
 }
 
