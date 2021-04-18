@@ -8,10 +8,8 @@ BaseAPIhandler::BaseAPIhandler(QObject *parent) : QObject(parent)
 
 void BaseAPIhandler::get(QNetworkRequest request)
 {
-    qInfo() << "NetworkManager get";
+    //qInfo() << "NetworkManager get";
     QNetworkReply *reply = m_manager.get(request);
-    //connect(reply, &QNetworkReply::readyRead,this,&BaseAPIhandler::readyRead);
-    //connect(reply, &QNetworkReply::finished, this, &BaseAPIhandler::finished);
     connect(reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &BaseAPIhandler::error);
 }
 
@@ -23,7 +21,6 @@ void BaseAPIhandler::readyRead()
     //if(reply->error() == QNetworkReply::NoError) {
         //qInfo() << "Reply exists";
         //qInfo() << reply->readAll();
-
 }
 
 void BaseAPIhandler::finished(QNetworkReply *reply)

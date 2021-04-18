@@ -4,9 +4,7 @@
 #include <QQmlContext>
 #include "fmihandler.h"
 #include "fingridhandler.h"
-//#include "datahandler.h"
 #include "chart.h"
-#include "controller.h"
 
 int main(int argc, char *argv[])
 {
@@ -33,14 +31,10 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    //Fingridhandler fin;
-
     QObject::connect(&fin, &Fingridhandler::sendData,
                      &chart, &Chart::receiveFingridData);
     QObject::connect(&fmi, &FMIhandler::sendData,
                      &chart, &Chart::receiveFMIData);
-
-
 
 
     return app.exec();

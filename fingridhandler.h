@@ -2,13 +2,17 @@
 #define FINGRIDHANDLER_H
 
 #include "baseapihandler.h"
-//#include "datahandler.h"
 
+/*
+ * Fingridhandler is inherited from baseAPIhandler.
+ * Class creates API request urls, which are passed to API "get(url)" function.
+*/
 class Fingridhandler: public BaseAPIhandler
 {
 public:
 
     /*
+     * GENERAL INFORMATION
      * Electricity consumption in Finland // Id 124 // MWh/h
      * Electricity consumption forecast for the next 24 hours // Id 165 // MWh/h
      * Electricity production in Finland // Id 74 // MWh/h
@@ -17,6 +21,7 @@ public:
      * Hydro power production // Id 191 // MW
      * Wind power production forecast // Id 245 // MWh/h
     */
+
     enum FingridApiIds {
         Electricity_consumption = 124,
         Electricity_consumption_forecast = 165,

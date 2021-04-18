@@ -7,7 +7,6 @@
 #include <QObject>
 #include <QtCharts>
 #include <QDateTime>
-//#include "datahandler.h"
 #include "xmlparser.h"
 #include "fingridhandler.h"
 #include "fmihandler.h"
@@ -15,27 +14,15 @@
 #include <unordered_map>
 #include <unordered_set>
 
-struct MinMax
-{
-    int MIN;
-    int MAX;
-};
-
-
 class Chart : public QObject
 {
     Q_OBJECT
-    //Q_PROPERTY(QtCharts::QLineSeries* timeSeries READ getTimeSeries WRITE setTimeSeries NOTIFY timeSeriesSignal)
 
 public:
     explicit Chart(QObject *parent = nullptr, xmlParser *parser = nullptr,
                    Fingridhandler *fingridHandler = nullptr,
                    FMIhandler *fmiHandler = nullptr);
     virtual ~Chart();
-
-    //QtCharts::QLineSeries* getTimeSeries() const;
-    //void setTimeSeries(QtCharts::QLineSeries *timeSeries);
-    //Q_INVOKABLE void showData();
 
     Q_INVOKABLE void setLineSeries(QLineSeries *lineSeries, QString ID);
 
@@ -59,16 +46,8 @@ signals:
     void fingridSeriesReady(QString title);
     void fmiSeriesReady(QString title);
 
-    //void timeSeriesSignal();
-    //void getData();
-
-    //void makeRequest();
-
 
 private:
-   // QtCharts::QLineSeries* timeSeries_;
-   //std::vector<DataHandler::time_series_element> timeSeriesData = {};
-
    QMap<QString, QVector<time_series_element>> timeSeriesData = {};
 
    xmlParser *parser_;

@@ -2,13 +2,14 @@
 #define FMIHANDLER_H
 
 #include "baseapihandler.h"
-//#include "datahandler.h"
 
+/*
+ * FMIhandler is inherited from baseAPIhandler.
+ * Class creates API request urls, which are passed to API "get(url)" function.
+*/
 class FMIhandler: public BaseAPIhandler
 {
 public:
-
-    // TODO: Timestep?
 
     enum class FMIids {
         Current_temperature,
@@ -21,17 +22,12 @@ public:
         Predicted_temperature
     };
 
-//    QString CURRENT_TEMPERATURE = "t2m";
-//    QString OBSERVED_WIND = "ws_10min";
-//    QString OBSERVED_CLOUDINESS = "n_man";
-//    QString AVERAGE_TEMPERATURE = "TA_PT1H_AVG";
-//    QString MIN_TEMPERATURE = "TA_PT1H_MIN";
-//    QString MAX_TEMPERATURE = "TA_PT1H_MAX";
-//    QString PREDICTED_WIND = "windspeedms";
-//    QString PREDICTED_TEMPERATURE = "temperature";
-
     FMIhandler();
 
+    /*
+     * Gets enum as parameter.
+     * Returns QString ID according to the enum.
+    */
     QString getFromFMIids(FMIids id);
 
     /*
